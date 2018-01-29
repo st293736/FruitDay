@@ -1,0 +1,519 @@
+#home-main{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    header{
+        height: .38rem;
+        font-size: 12px;
+        height: auto;
+        line-height: .36rem;
+        background: #fff;
+        box-shadow: 0 0.03rem 0.03rem 0 rgba(0,0,0,.2);
+        border-bottom: 4px solid #ccc;
+        .position{
+            float: left;
+            color: #65a032;
+            margin: 0 0 0 .16rem;
+            width: 70%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            .logo{
+                float: left;
+            }
+        }
+        .home-search{
+            float: right;
+            i{
+                width: .36rem;
+                height: .36rem;
+                text-align: right;
+                font-size: .19rem;
+                padding-right: .16rem;
+                color: #3a3a3a;
+            }
+            
+           
+        }   
+    }
+    section{
+        height: 100%;
+        flex: 1;
+        padding: 0;
+        margin: 0;
+        overflow-x: hidden;
+        overflow-y:scroll ;
+//      background: yellow;
+        .home-swiper{
+            height: 1.36rem;
+            img{
+                width: 100%;
+                height: 1.36rem;
+                float: left;
+            }
+            .mint-swipe-indicator{
+                border: 1px solid #000;
+                position: relative;
+                width: .07rem;
+                height: .03rem;
+                margin: 0 .02rem!important;
+                background-color: #000;
+                opacity: 0.4;
+                border-radius: .02rem .02rem .02rem .02rem;
+              
+            }
+          .is-active{
+                height: .07rem;
+                border-radius: 50% 50% 50% 50%;
+                background-color: #ff7e05;
+                top: .02rem;
+                opacity: 1;
+                border-color: #fff;
+           }
+        }
+        .home-activity{
+            background: #fff;
+            .activity{
+                padding-bottom: 0.2rem;
+                padding: 0 0.075rem;
+                display: flex;
+                a{
+                    display: block;
+                    width: 50%;
+                    box-sizing: border-box;
+                    padding: .1rem .025rem 0;
+                    img{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .home-banner{
+            img{
+                height: 1.36rem;
+            }
+        }
+        .home-hot{
+            margin-top: 0.1rem;
+            background: #fff;
+            .hot-title{
+                img{
+                    height: 0.55rem;
+                }
+            }
+            .hot-show{
+                a{
+                    display: block;
+                    padding: 0 .12rem 0 .25rem;
+                    height: 1.6rem;
+                    border-top: .005rem solid rgba(220,220,220,.2);
+                    dl{
+                        margin-top: 0.15rem;
+                        width: 100%;
+                        display: flex;
+                        dt{
+                            img{
+                                width: 1.2rem;
+                                height: 1.2rem;
+                            }
+                        }
+                        dd{
+                            width: 1.38rem;
+                            margin-left: 0.25rem;
+                            text-align: left;
+                            h5{
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                font-size: .17rem;
+                                margin-bottom: .05rem;
+                                color: #3a3a3a;
+                                font-weight: 400;
+                            }    
+                            p{
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                color: #878787;
+                                text-align: justify;
+                                margin: 0;
+                            }   
+                            .price{
+                                margin-top: .37rem;
+                                position: relative;
+                                span{
+                                    display: block;
+                                    color: #ff8000;
+                                    width: 100%;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    em{
+                                        font-size: .12rem;
+                                    }
+                                }
+                                i{
+                                    position: absolute;
+                                    top: -.09rem;
+                                    right: 0;
+                                    width: .74rem;
+                                    height: .4rem;
+                                    text-align: right;
+                                    line-height: .35rem;  
+                                }
+                            }                    
+                        }
+                    }
+                }
+            }
+            .hot-swiper{
+                a{
+                    display: block;
+                    text-align: center;
+                    max-width: 1.12rem;
+                    min-width: 1rem;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    padding: .1rem .08rem .15rem;
+                }
+                .swiper-slide{
+                    width: 1.12rem;
+                    .img-box{
+                        margin: auto;
+                        position: relative;
+                        min-width: .8rem;
+                        min-height: .8rem;
+                        max-width: 1rem;
+                        height: 1rem;
+                        img{
+                            height: 0.96rem;
+                            width: 0.96rem;
+                        }
+                    }
+                    .save{
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 1rem;
+                        text-align: center;
+                        em{
+                            position: relative;
+                            border-radius: .03rem .03rem .03rem .03rem;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            left: 0;
+                            padding: .03rem .06rem;
+                            color: #fff;
+                            font-size: .09rem;
+                            background-color: #ff8a65;
+                        }
+                    }
+                    .name{
+                        font-size: .13rem;
+                        color: #3a3a3a;
+                        text-align: center;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        margin-top: .12rem;
+                    }
+                    .price{
+                        position: relative;
+                        span{
+                            text-align: center;
+                            font-size: .12rem;
+                            display: block;
+                            color: #ff8000;
+                            width: 100%;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            em{
+                                font-size: .1rem;
+                            }
+                        }
+                        i{
+                            position: absolute;
+                            top: -.09rem;
+                            right: 0;
+                            width: .74rem;
+                            height: .4rem;
+                            text-align: right;
+                            line-height: .35rem;
+                        }
+                    }
+                }
+            }
+        }
+        .home-new{
+            margin-top: 0.1rem;
+            background: #fff;
+            .new-title{
+                img{
+                    height: 0.55rem;
+                }
+            }
+            .new-show{
+                a{
+                    display: block;
+                    padding: 0 .12rem 0 .25rem;
+                    border-top: .005rem solid rgba(220,220,220,.2);
+                    img{
+                        width: 100%;
+                        height: 1.3rem;
+                    }
+                }
+            }
+            .new-swiper{
+                a{
+                    display: block;
+                    text-align: center;
+                    max-width: 1.12rem;
+                    min-width: 1rem;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    padding: .1rem .08rem .15rem;
+                }
+                .swiper-slide{
+                    width: 1.12rem;
+                    .img-box{
+                        margin: auto;
+                        position: relative;
+                        min-width: .8rem;
+                        min-height: .8rem;
+                        max-width: 1rem;
+                        height: 1rem;
+                        img{
+                            height: 0.96rem;
+                            width: 0.96rem;
+                        }
+                    }
+                    .save{
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 1rem;
+                        text-align: center;
+                        em{
+                            position: relative;
+                            border-radius: .03rem .03rem .03rem .03rem;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            left: 0;
+                            padding: .03rem .06rem;
+                            color: #fff;
+                            font-size: .09rem;
+                            background-color: #ff8a65;
+                        }
+                    }
+                    .name{
+                        font-size: .13rem;
+                        color: #3a3a3a;
+                        text-align: center;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        margin-top: .12rem;
+                    }
+                    .price{
+                        position: relative;
+                        span{
+                            text-align: center;
+                            font-size: .12rem;
+                            display: block;
+                            color: #ff8000;
+                            width: 100%;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            em{
+                                font-size: .1rem;
+                            }
+                        }
+                        i{
+                            position: absolute;
+                            top: -.09rem;
+                            right: 0;
+                            width: .74rem;
+                            height: .4rem;
+                            text-align: right;
+                            line-height: .35rem;
+                        }
+                    }
+                }
+            }
+        }
+        .home-handpick{
+            margin-top: 0.1rem;
+            background: #fff;
+            .handpick-title{
+                img{
+                    height: 0.55rem;
+                }
+            }
+            .handpick-fruit,.handpick-seafood,.handpick-meat,.handpick-fastfood{
+                img{
+                        height: 1.36rem;
+                }
+            }
+            .swiper-container{
+                a{
+                    display: block;
+                    text-align: center;
+                    max-width: 1.12rem;
+                    min-width: 1rem;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    padding: .1rem .08rem .15rem;
+                }
+                .swiper-slide{
+                    width: 1.12rem;
+                    .img-box{
+                        margin: auto;
+                        position: relative;
+                        min-width: .8rem;
+                        min-height: .8rem;
+                        max-width: 1rem;
+                        height: 1rem;
+                        img{
+                            height: 0.96rem;
+                            width: 0.96rem;
+                        }
+                    }
+                    .save{
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 1rem;
+                        text-align: center;
+                        em{
+                            position: relative;
+                            border-radius: .03rem .03rem .03rem .03rem;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            left: 0;
+                            padding: .03rem .06rem;
+                            color: #fff;
+                            font-size: .09rem;
+                            background-color: #ff8a65;
+                        }
+                    }
+                    .name{
+                        font-size: .13rem;
+                        color: #3a3a3a;
+                        text-align: center;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        margin-top: .12rem;
+                    }
+                    .price{
+                        position: relative;
+                        span{
+                            text-align: center;
+                            font-size: .12rem;
+                            display: block;
+                            color: #ff8000;
+                            width: 100%;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            em{
+                                font-size: .1rem;
+                            }
+                        }
+                        i{
+                            position: absolute;
+                            top: -.09rem;
+                            right: 0;
+                            width: .74rem;
+                            height: .4rem;
+                            text-align: right;
+                            line-height: .35rem;
+                        }
+                    }
+                }
+            }
+        }
+        .home-popular{
+            margin-top: 0.1rem;
+            background: #fff;
+            .popular-title{
+                img{
+                    height: 0.55rem;
+                }
+            }
+            .popular-list{
+                a{
+                    display: block;
+                    padding: 0 .12rem 0 .25rem;
+                    height: 1.6rem;
+                    border-top: .005rem solid rgba(220,220,220,.2);
+                    dl{
+                        margin-top: 0.15rem;
+                        width: 100%;
+                        display: flex;
+                        dt{
+                            img{
+                                width: 1.2rem;
+                                height: 1.2rem;
+                            }
+                        }
+                        dd{
+                            width: 1.38rem;
+                            margin-left: 0.25rem;
+                            text-align: left;
+                            h5{
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                font-size: .17rem;
+                                margin-bottom: .05rem;
+                                color: #3a3a3a;
+                                font-weight: 400;
+                            }    
+                            p{
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                color: #878787;
+                                text-align: justify;
+                                margin: 0;
+                            }   
+                            .price{
+                                margin-top: .37rem;
+                                position: relative;
+                                span{
+                                    display: block;
+                                    color: #ff8000;
+                                    width: 100%;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    em{
+                                        font-size: .12rem;
+                                    }
+                                }
+                                i{
+                                    position: absolute;
+                                    top: -.09rem;
+                                    right: 0;
+                                    width: .74rem;
+                                    height: .4rem;
+                                    text-align: right;
+                                    line-height: .35rem;  
+                                }
+                            }                    
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
