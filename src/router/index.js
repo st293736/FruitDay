@@ -4,6 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/Home'
 import self from "@/components/self"
 import cart from "@/components/cart"
+import Search from '@/components/Search';
+import FenLei from '@/components/FenLei';
 Vue.use(Router)
 
 export default new Router({
@@ -23,6 +25,16 @@ mode:"hash",
       path: '/self',
       name: 'self',
       component: self
+    },
+    {
+      path:'/search',
+      name : 'Search',
+      component : Search
+    },
+    {
+      path:'/fenlei/:fid',
+      name : 'FenLei',
+      component : FenLei
     }
   ]
 })

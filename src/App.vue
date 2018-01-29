@@ -1,22 +1,23 @@
 <template>
   <div id="app">
     <router-view class="contant"/>
-    <footer>
-    	<router-link to="/">首页</router-link>
-    	<router-link to="#">分类</router-link>
-    	<router-link to="/cart">购物车</router-link>
-    	<router-link to="/self">我的果园</router-link>
-    </footer>
+    <Footer/>
   </div>
 </template>
 
 <script>
-		import $ from "./assets/javascripts/jquery.js"
+import FenLei from './components/FenLei';
+import Footer from './components/Footer';
+import $ from "./assets/javascripts/jquery.js"
 export default {
-  name: 'App'
+  name: 'App',
+  components : {
+    Footer,
+    FenLei
+  }
 }
 </script>
 <style lang="scss" >
 @import "./assets/scss/common.scss";
-@import url("assets/style/public.css")
+@import "./assets/scss/public.scss";
 </style>

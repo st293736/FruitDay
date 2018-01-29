@@ -1,0 +1,27 @@
+@charset"utf-8";
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form
+, fieldset, legend, img,section, figure{ margin:0; padding:0;} 
+a,u{text-decoration:none;}
+b,strong{font-weight:100;}
+i,em{font-style:normal;}
+ul,li,ol{
+	list-style: none;
+}
+h1,h2,h3,h4,h5,h6{font-size:16px;font-weight:100;}
+img{
+	display:block;
+	border:0;
+}
+html,body{
+	height: 100%;
+}
+html{
+	font-size: 31.25vw;
+}
+
+body{
+	display:flex;
+	flex-direction:column;	
+}
+*{box-sizing:border-box;}
+
