@@ -7,14 +7,14 @@ import cart from "@/components/cart"
 import Search from '@/components/Search';
 import FenLei from '@/components/FenLei';
 import Details from '@/components/Details';
-
+import Address from '@/components/Address';
 Vue.use(Router)
 
 export default new Router({
 mode:"hash",
   routes: [
     {
-      path: '/',
+       path: '/',
       name: 'Home',
       component: Home
     },
@@ -42,6 +42,11 @@ mode:"hash",
       path:'/Details',
       name : 'Details',
       component : Details
+    },
+     {
+      path:'/address',
+      name : 'Address',
+      component : Address
     }
   ]
 })

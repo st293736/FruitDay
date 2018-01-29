@@ -3,14 +3,16 @@
 		<header>
 			<div class="position">
 				<div class="logo">
-					<img src=""/>
+					<img src="../assets/img/home/home_logo.png"/>
 				</div>
-				<div class="address">
-					<span>北京</span><i></i>
-				</div>
+				<router-link to="/address">
+					<div class="address">
+						<span>北京</span><i class="iconfont">&#xe61c;</i>
+					</div>
+				</router-link>
 			</div>
 			<div class="home-search">
-				<i>shouso</i>
+				<i class="iconfont">&#xe60e;</i>
 			</div>
 		</header>
 		<section>
@@ -70,8 +72,8 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart">
-					    				
+					    			<i class="addcart iconfont">
+					    				&#xe634;
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -108,8 +110,8 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart">
-					    				
+					    			<i class="addcart iconfont">
+					    				&#xe634;
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -145,8 +147,8 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart">
-					    				
+					    			<i class="addcart iconfont">
+					    				&#xe634;
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -176,8 +178,8 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart">
-					    				
+					    			<i class="addcart iconfont">
+					    				&#xe634;
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -207,8 +209,8 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart">
-					    				
+					    			<i class="addcart iconfont">
+					    				&#xe634;
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -238,8 +240,8 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart">
-					    				
+					    			<i class="addcart iconfont">
+					    				&#xe634;
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -254,7 +256,7 @@
 					<router-link to="/"><img src="../assets/img/home/home_popular.jpg"/></router-link>
 				</div>
 				<div class="popular-list">
-					<router-link :to="{name:'Details'}" v-for="(item,index) in popularList" :key="index">
+					<router-link to="/" v-for="(item,index) in popularList" :key="index">
 						<dl>
 							<dt>
 								<img :src="item.image"/>
@@ -267,7 +269,9 @@
 										{{item.price}}/
 										<em>{{item.volume}}</em>
 									</span>
-									<i class="addcart"></i>
+									<i class="addcart iconfont">
+										&#xe634;
+									</i>
 								</div>
 							</dd>
 						</dl>
@@ -275,33 +279,33 @@
 				</div>
 			</div>
 		</section>
-		<footer>
-	        <ul>
-	            <router-link :to="{name:'Home'}" class="rl">
-	            <i class="iconfont icon-weibiaoti1"></i>
-	            <a href="javascript:;">首页</a>
-	          </router-link>
-	          <router-link :to="{name:'FenLei'}" class="rl">
-	            <i class="iconfont icon-fenlei"></i>
-	            <a href="javascript:;">分类</a>
-	         </router-link>
-	         <router-link :to="{name:'cart'}" class="rl">
-	            <i class="iconfont icon-03"></i>
-	            <a href="javascript:;">购物车</a>
-	         </router-link>
-	          <router-link :to="{name:'self'}" class="rl">
-	            <i class="iconfont icon-huiyuan"></i>
-	            <a href="javascript:;">我的果园</a>
-	          </router-link>
-	        </ul>
-	    </footer>
+		 <footer>
+        <ul>
+            <router-link :to="{name:'Home'}" class="rl">
+            <i class="iconfont icon-weibiaoti1"></i>
+            <a href="javascript:;">首页</a>
+          </router-link>
+          <router-link :to="{name:'FenLei'}" class="rl">
+            <i class="iconfont icon-fenlei"></i>
+            <a href="javascript:;">分类</a>
+         </router-link>
+         <router-link :to="{name:'cart'}" class="rl">
+            <i class="iconfont icon-03"></i>
+            <a href="javascript:;">购物车</a>
+         </router-link>
+          <router-link :to="{name:'self'}" class="rl">
+            <i class="iconfont icon-huiyuan"></i>
+            <a href="javascript:;">我的果园</a>
+          </router-link>
+        </ul>
+    </footer>
 	</div>
 </template>
 
 <script src="../assets/js/home.js">
 </script>
 
-<style  lang="scss" >
+<style  lang="scss" scoped >
 	@import "../assets/scss/home.scss";
 	@import "../assets/css/swiper.min.css";
 	@import "../assets/iconfont/iconfont.css";

@@ -1,0 +1,157 @@
+#address{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .nav-header{
+        width: 100%;
+        height: 1.18rem;
+        background-color: #fff;
+        color: #65a032;
+        line-height: .43rem;
+        top: 0;
+        .header{
+            display: flex;
+            a{
+            display: inline-block;
+            color: #76a741;
+            width: .88rem;
+            margin-left: .08rem;
+                i{
+                    display: inline-block;
+                    float: none;
+                    font-size: .3rem;
+                    margin-top: 0;
+                }
+            }
+            .goods-address{
+                flex: 1;
+                text-align: center;
+                font-size: .17rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            a:nth-of-type(2){
+                color: #76a741;
+                display: inline-block;
+                width: .8rem;
+                margin-right: .08rem;
+                text-align: right;
+            }
+        }
+        .search{
+            .box{
+                background-color: #eee;
+                
+            }
+            background-color: #fff;
+            padding: 0 .1rem .1rem;
+            position: relative;
+            border-radius: .04rem .04rem .04rem .04rem;
+            span{
+                left: .1rem;
+                box-sizing: border-box;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: .8rem;
+                color: #3a3a3a;
+                font-size: .16rem;
+                text-align: center;
+                height: .33rem;
+                border-right: .01rem solid #dcdcdc;
+                em{
+                    margin-left: .03rem;
+                    display: block;
+                    width: 82%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                i{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    font-size: .12rem;
+                    margin: 0 .03rem 0 0;
+                }
+            }
+            .search-address{
+                margin-left: .8rem;
+                box-sizing: border-box;
+                position: relative;
+                background-color: #eee;
+                border-radius: .05rem;
+                color: #878787;
+                i{
+                        font-size: .16rem;
+                    margin: 0 .1rem;
+                    position: relative;
+                    line-height: .32rem;
+                }
+                input{
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 100%;
+                    padding: 0 .3rem 0 0;
+                    height: .32rem;
+                    border: medium none;
+                    outline: medium none;
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+    section{
+        flex: 1;
+        height: 100%;
+        .current-address{
+            h5{
+                margin: 0;
+                font-weight: 400;
+                background-color: #f5f5f5;
+                color: #878787;
+                padding: .12rem;
+                font-size: .12rem;
+            }
+            .auto-address{
+                background-color: #fff;
+                display: flex;
+                .local-address{
+                    border-bottom: .01rem solid #f5f5f5;
+                    padding: .15rem .1rem .15rem 0;
+                    margin: 0 0 0 .1rem;
+                    flex: 1;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                .reposition{
+                    position: relative;
+                    align-self: center;
+                    min-width: .8rem;
+                    color: #ff8000;
+                    text-align: right;
+                    padding-left: .1rem;
+                    i{
+                        position: absolute;
+                        left: .1rem;
+                        font-size: .18rem;
+                        margin-right: .04rem;
+                    }
+                }
+            }
+        }
+        .my-address{
+            h5{
+                margin: 0;
+                font-weight: 400;
+                background-color: #f5f5f5;
+                color: #878787;
+                padding: .12rem;
+                font-size: .12rem;
+            }
+        }
+    }
+}
