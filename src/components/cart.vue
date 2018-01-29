@@ -2,14 +2,14 @@
 	<div id="box">
 		<header>
 			<a href="#" v-if="!showflag">
-				<img src="../assets/img/to2.png"/>
+				<img src="../assets/img/imgS/to2.png"/>
 			</a>
 			购物车
 			<a href="#" v-if="!showflag">编辑</a>
 		</header>
 		<section>
 			<div class="one" v-if="showflag">
-				<img src="../assets/img/cart_empty-172251d77c.png"/>
+				<img src="../assets/img/imgS/cart_empty-172251d77c.png"/>
 				<div class="text">还没找到心仪的商品吗？</div>
 				<a href="#">去逛逛吧</a>
 			</div>
@@ -23,8 +23,8 @@
 						<span>商品清单</span>
 						<span>总重约<span class="totalWeight">{{weight}}</span>kg</span>
 					</p>
-					<li v-for="item in product.products">
-						<input type="radio" class="choise option"/>
+					<li v-for="item in product.products" class="lis">
+						<input type="checkbox" class="choise option" />
 						<div class="product">
 							<a href="#"><img :src="item.photo"/></a>
 							<a href="#" class="name">{{item.name}}</a>
@@ -33,7 +33,7 @@
 								<span class="zhiliang2">{{item.weight}}kg</span>
 							</p>
 							<p>
-								<span class="price">¥{{item.price}}</span>
+								<span>¥</span><span class="price">{{item.price}}</span>
 								<a href="#" class="time">{{item.delivery_tag}}</a>
 							</p>
 						</div>
@@ -46,28 +46,28 @@
 						</div>
 					</li>
 				</ul>
-			<div class="closing">
-				<p>
-					<input type="radio" class="checkAll options"/><span>全选</span>
-				</p>
-				<p>
-					<span>
-						<span>合计：</span>
-						<span class="money">¥{{product.normal_price}}</span>
-					</span>
-					<a href="#">立即结算<span>({{product.count}})</span></a>
-				</p>
-			</div>
+				<div class="closing">
+					<p>
+						<input type="checkbox" class="checkAll options"/><span>全选</span>
+					</p>
+					<p>
+						<span>
+							<span>合计：</span>
+							¥<span class="money">{{price.toFixed(2)}}</span>
+						</span>
+						<a href="#">立即结算(<span class="sum">{{product.count}}</span>)</a>
+					</p>
+				</div>
 			</div>
 		</section>
 		<div id="tilt"></div>
 		<div id="hint">
 			<p>
-				确定要删除XXXXX？
+				确定要删除<span class="names">xxxx</span>？
 			</p>
 			<p>
-				<a href="#" value="false" >取消</a>
-				<a href="#" value="true">确定</a>
+				<a href="#" value="false" class="cls">取消</a>
+				<a href="#" value="true" class="ok">确定</a>
 			</p>
 		</div>
 		<footer>
@@ -93,10 +93,10 @@
 	</div>
 </template>
 
-<script src="./js/cart.js">
+<script src="../assets/js/cart.js">
 	
 </script>
 
-<style scoped lang="scss" src="./sass/cart.scss">
+<style scoped lang="scss" src="../assets/scss/cart.scss">
 
 </style>

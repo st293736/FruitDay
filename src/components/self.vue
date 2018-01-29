@@ -4,13 +4,13 @@
 			<div class="use">
 				<p>
 					<a href="#">
-						<a href="#"><img src="../assets/img/old_v0.png"/></a>
+						<a href="#"><img src="../assets/img/imgS/old_v0.png"/></a>
 					</a>
 					<a href="#" class="telphone">{{user.mobile}}</a>
 					<a href="#">签到送好礼</a>
 				</p>
 				<p>
-					<a href="#"><img src="../assets/img/1517027396.png"/></a>
+					<a href="#"><img src="../assets/img/imgS/1517027396.png"/></a>
 					会员码
 				</p>
 			</div>
@@ -26,7 +26,7 @@
 			<div class="one">
 				<a href="#">
 					<span><span class="iconfont icon-dingdan">
-</span>我的订单</span>
+						</span>我的订单</span>
 					<span>全部订单</span>
 				</a>
 				<ul>
@@ -76,10 +76,10 @@
 	</div>
 </template>
 
-<script src="./js/self.js">
+<script src="../assets/js/self.js">
 	
 </script>
 
-<style scoped lang="scss" src="./sass/self.scss">
+<style scoped lang="scss" src="../assets/scss/self.scss">
 	
 </style>
