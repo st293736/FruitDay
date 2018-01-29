@@ -1,27 +1,25 @@
-#FenLei{
-	footer{
+footer{
+	width:100%;
+	height:0.42rem;
+	border-top:2px solid #ccc;
+	ul{
+		display:flex;
 		width:100%;
-		height:0.42rem;
-		border-top:2px solid #ccc;
-		ul{
+		height:100%;
+		.rl{
 			display:flex;
-			width:100%;
 			height:100%;
-			.rl{
-				display:flex;
-				height:100%;
-				flex:1;
-				flex-direction:column;
-				text-align:center;
-				justify-content:center;
+			flex:1;
+			flex-direction:column;
+			text-align:center;
+			justify-content:center;
+			color:#898989;
+			a{
+				font-size:0.115rem;
 				color:#898989;
-				a{
-					font-size:0.115rem;
-					color:#898989;
-				}
-				i{
-					font-size:0.2rem!important;
-				}
+			}
+			i{
+				font-size:0.2rem!important;
 			}
 		}
 	}

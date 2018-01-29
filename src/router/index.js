@@ -6,6 +6,8 @@ import self from "@/components/self"
 import cart from "@/components/cart"
 import Search from '@/components/Search';
 import FenLei from '@/components/FenLei';
+import Details from '@/components/Details';
+
 Vue.use(Router)
 
 export default new Router({
@@ -35,6 +37,11 @@ mode:"hash",
       path:'/fenlei/:fid',
       name : 'FenLei',
       component : FenLei
+    },
+    {
+      path:'/Details',
+      name : 'Details',
+      component : Details
     }
   ]
 })
