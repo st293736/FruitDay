@@ -4,7 +4,7 @@ export default {
   name: 'FenLei',
   data () {
     return {
-      list : [],
+      list : {},
       OG : []
     }
   },
@@ -23,9 +23,10 @@ export default {
         .then((res) => {
           //左侧
           this.OG = res.data.data.classOneGroup;
-          console.log(this.OG);
+          //console.log(this.OG);
           //右侧
           this.list = res.data.data.childrenList[0];
+          console.log(res.data.data.childrenList[0].class3Group);
         })
         .catch((error) => {
           console.log(error);

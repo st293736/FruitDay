@@ -19,8 +19,8 @@
         </div>
         <div class="_right" >
          <div class="BT">
-            <h3 class="titD" v-for="tt in list">
-              {{tt.name}}
+            <h3 class="titD" v-for="ta in list">
+              {{ta.name}}
           </h3>
           <span>全部<i class="iconfont icon-guanbi"></i></span>
          </div>
@@ -37,7 +37,7 @@
             <i class="iconfont icon-weibiaoti1"></i>
             <a href="javascript:;">首页</a>
           </router-link>
-          <router-link :to="{name:'FenLei'}" class="rl">
+          <router-link :to="{name:'FenLei',params:{fid:303}}" class="rl">
             <i class="iconfont icon-fenlei"></i>
             <a href="javascript:;">分类</a>
          </router-link>

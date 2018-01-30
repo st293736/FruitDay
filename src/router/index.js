@@ -39,7 +39,7 @@ mode:"hash",
       component : FenLei
     },
     {
-      path:'/Details',
+      path:'/Details/:a',
       name : 'Details',
       component : Details
     },
