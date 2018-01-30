@@ -1,22 +1,28 @@
 import axios from "axios"
 export default{
-	name:"self",
-	data(){
-		return {
-			user:{}
+	name : "login",
+	data (){
+		return{
+			Info:{}
 		}
 	},
 	methods:{
+		logOut(){
+			removeCookie("username");
+			this.$router.push({
+				path:"/",
+				name:"Home"
+			});
+			//删除cookie
+			function removeCookie(key){
+				document.cookie = encodeURIComponent(key) + "=;expires=" + new Date(0) + ";path=/";
+			}
+		}
 	},
 	mounted(){
-		console.log(typeof getCookie("username"))
-		if(getCookie("username")){
-			var cookieGet = JSON.parse(getCookie("username"));
-			this.user = cookieGet;
-		}else{
-			console.log("no")
-			this.$router.push({path:"/login"});
-		}
+		var cookieGet =JSON.parse(getCookie("username"));
+		this.Info = cookieGet;
+		console.log(this.Info)
 		//创建cookie
 		function createCookie(key,value,expires){
 			var cookieText = encodeURIComponent(key) + "=" + encodeURIComponent(value) + ";path=/";

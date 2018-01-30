@@ -8,7 +8,12 @@ import Search from '@/components/Search';
 import FenLei from '@/components/FenLei';
 import Details from '@/components/Details';
 import Address from '@/components/Address';
+<<<<<<< HEAD
 import All from '@/components/All';
+=======
+import Login from '@/components/Login';
+import PersonInfo from '@/components/PersonInfo';
+>>>>>>> 106694697d97881c12bebfaf2c52efdfa658eb93
 Vue.use(Router)
 
 export default new Router({
@@ -49,10 +54,23 @@ mode:"hash",
       name : 'Address',
       component : Address
     },
+<<<<<<< HEAD
      {
       path:'/All/:all',
       name : 'All',
       component : All
     }
+=======
+    {
+      path:'/login',
+      name : 'Login',
+      component : Login
+    },
+     {
+      path:'/personInfo',
+      name : 'PersonInfo',
+      component : PersonInfo
+    } ,
+>>>>>>> 106694697d97881c12bebfaf2c52efdfa658eb93
   ]
 })

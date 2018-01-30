@@ -20,6 +20,11 @@ module.exports = {
         target: 'https://wap.fruitday.com', //目标服务器
         changeOrigin: true, //开启代理
         pathRewrite: { '^/v4': '/v4' }  //对访问路径进行替换操作
+    },
+    '/api': {//这里是需要匹配的路径，如果匹配上了，则代理到目标服务器上
+        target: 'http://localhost:3000', //目标服务器
+        changeOrigin: true, //开启代理
+        pathRewrite: { '^/api': '/api' }  //对访问路径进行替换操作
     }
     },
     // Various Dev Server settings

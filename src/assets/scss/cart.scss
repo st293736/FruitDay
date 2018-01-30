@@ -4,6 +4,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    overflow: hidden;
     header{
         width:100%;
         height:0.45rem;
@@ -41,7 +43,6 @@
             line-height: 0.44rem;
             color:#76a741;
         }
-//      span
     }
     
     section{
@@ -229,7 +230,6 @@
                         display: flex;
                         align-items: flex-end;
                         p{
-                            width: 100%;
                             height: 0.22rem;
                             background: white;
                             display: flex;
@@ -273,7 +273,8 @@
                 }
             }
             .closing{
-                bottom: 0.4rem;
+                position:fixed;
+                bottom:0.4rem;
                 width: 100%;
                 height: 0.5rem;
                 background: white;

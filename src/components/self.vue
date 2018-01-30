@@ -6,7 +6,8 @@
 					<a href="#">
 						<a href="#"><img src="../assets/img/imgS/old_v0.png"/></a>
 					</a>
-					<a href="#" class="telphone">{{user.mobile}}</a>
+					<router-link to="/personInfo" class="telphone">{{user.mobile}}</router-link>
+					<!--<a href="#" class="telphone">{{user.mobile}}</a>-->
 					<a href="#">签到送好礼</a>
 				</p>
 				<p>
@@ -59,7 +60,7 @@
             <i class="iconfont icon-weibiaoti1"></i>
             <a href="javascript:;">首页</a>
           </router-link>
-          <router-link :to="{name:'FenLei',params:{fid:303}}" class="rl">
+          <router-link :to="{name:'FenLei',params:{fid: 303}}" class="rl">
             <i class="iconfont icon-fenlei"></i>
             <a href="javascript:;">分类</a>
          </router-link>
