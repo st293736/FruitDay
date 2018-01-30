@@ -7,26 +7,41 @@ export default {
       lists : {},
       twos : [],
       zk : [],
-      tu : []
+      tu : [],
+      PingJ : {},
+      gd : {},
+      JuTi : {}
     }
   },
   mounted(){
-  	var id = this.$route.params.a;
-  	//console.log(this.$route.params.a);
+  	//console.log(this);
+    var id = this.$route.params.a;
   	//axios拿到跳转到详情页的商品的id
   	
   	axios.get(`/v3/product/detail?store_id_list=3&product_id=${id}&store_id=3&delivery_code=3`)
 	  .then( (res) => {
-	    console.log(res);
+	    //console.log(res);
 	    this.lists = res.data.data.productInfo;
 	    this.twos = res.data.data.productItem;
 	    this.zk = res.data.data;
 	    this.tu = res.data.data.templatePhoto;
-	    console.log(res.data.data.productInfo.product_name);
+	    //console.log(res.data.data.productInfo.product_name);
 	  })
 	  .catch(function (error) {
 	    console.log(error);
 	  });
+    //评价的axios
+    axios.get(`/v3/comment/rate_and_comment?product_id=${id}`)
+    .then((res) => {
+      console.log(res);
+      this.PingJ = res.data.data.num;
+      this.gd = res.data.data.good;
+      this.JuTi = res.data.data.data;
+      console.log(this.JuTi)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   	//商品 详情的评价的点击事件
   	$(".commodity").css({
   		"color" : "#65a032",

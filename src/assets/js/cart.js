@@ -19,7 +19,7 @@ export default{
 	},
 	mounted(){
 		var that = this;
-		axios.get("/v3/cart/get?connect_id=66vlo9gbgm8p19jn97c4s6o330&store_id_list=3&item_id=")
+		axios.get("/v3/cart/get?connect_id=5ktek9r6bj7joujqqsvhefd0n7&store_id_list=3&item_id=")
 		.then((response)=>{
 //			console.log(response);
 			this.product = response.data.cart;
