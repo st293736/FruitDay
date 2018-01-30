@@ -57,10 +57,46 @@ export default{
 					$(this).click(function(){
 						if($(this).attr("checked") != "checked"){
 							$(this).attr("checked","checked");
-							alert(1);
+							$(".option").each(function(index,value){
+								if($(this).attr("checked")!= "checked"){
+									$(this).parents("ul").siblings(".closing").children("p:eq(0)").children("input").removeAttr("checked");
+								}else{
+									$(this).parents("ul").siblings(".closing").children("p:eq(0)").children("input").attr("checked","checked");
+								}
+							})
+							//总商品数移出该商品数
+							var str = parseInt($(this).parents("ul").siblings(".closing").children("p:eq(1)").children("a").children("span").html());
+							//剩余商品数
+							var residue = str + parseInt($(this).siblings(".number").children("p").children("span").html())
+							$(this).parents("ul").siblings(".closing").children("p:eq(1)").children("a").children("span").html(residue);
+							//总重量移出数
+							var weight = Number($(this).parents("li").siblings("p").children("span:eq(1)").children("span").html());
+							//当前商品重量
+							var weight_one = Number($(this).siblings(".product").children("p:eq(0)").children("span:eq(1)").html() * Number($(this).siblings(".number").children("p").children("span").html()));
+							$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight + weight_one);
+							//当前显示的总价格
+							var money = Number($(this).parents("ul").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html());
+							//该商品的总价格
+							var money_one = (Number($(this).siblings(".product").children("p:eq(1)").children("span:eq(1)").html()) * Number($(this).siblings(".number").children("p").children("span").html()));
+							$(this).parents("ul").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html(parseFloat(money + money_one).toFixed(2));
 						}else{
-							alert(2);
 							$(this).removeAttr("checked");
+							$(this).parents("ul").siblings(".closing").children("p:eq(0)").children("input").removeAttr("checked");
+							//总商品数移出该商品数
+							var str = parseInt($(this).parents("ul").siblings(".closing").children("p:eq(1)").children("a").children("span").html());
+							//剩余商品数
+							var residue = str - parseInt($(this).siblings(".number").children("p").children("span").html())
+							$(this).parents("ul").siblings(".closing").children("p:eq(1)").children("a").children("span").html(residue);
+							//总重量移出数
+							var weight = Number($(this).parents("li").siblings("p").children("span:eq(1)").children("span").html());
+							//当前商品重量
+							var weight_one = Number($(this).siblings(".product").children("p:eq(0)").children("span:eq(1)").html() * Number($(this).siblings(".number").children("p").children("span").html()));
+							$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight - weight_one);
+							//当前显示的总价格
+							var money = Number($(this).parents("ul").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html());
+							//该商品的总价格
+							var money_one = (Number($(this).siblings(".product").children("p:eq(1)").children("span:eq(1)").html()) * Number($(this).siblings(".number").children("p").children("span").html()));
+							$(this).parents("ul").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html(parseFloat(money - money_one).toFixed(2));
 						}
 					})
 				})
@@ -112,6 +148,19 @@ export default{
 						var unit = Number($(this).parents(".number").siblings(".product").children("p:eq(1)").children("span:eq(1)").html());
 						$(this).parents("ul").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html((money + unit).toFixed(2));
 					})
+				})
+				//添加地址
+				$(".addAress").click(function(){
+					$("#tilt").fadeIn("2000","linear");
+					$("#address").animate({top:"1.7rem"},300,"linear");
+				})
+				$(".clos").click(function(){
+					$("#tilt").fadeOut("2000","linear");
+					$("#address").animate({top:"5.69rem"},300,"linear");
+				})
+				$("#tilt").click(function(){
+					$("#address").animate({top:"5.69rem"},300,"linear");
+					$("#tilt").fadeOut("2000","linear");
 				})
 			},1000)
 		

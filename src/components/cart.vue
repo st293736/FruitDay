@@ -4,7 +4,7 @@
 			<a href="#" v-if="!showflag">
 				<img src="../assets/img/imgS/to2.png"/>
 			</a>
-			购物车
+			<span>购物车</span>
 			<a href="#" v-if="!showflag">编辑</a>
 		</header>
 		<section>
@@ -14,7 +14,7 @@
 				<a href="#">去逛逛吧</a>
 			</div>
 			<div class="two" v-if="!showflag">
-				<a href="#">
+				<a href="#" class="addAress">
 					<span>添加地址</span>
 					<span></span>
 				</a> 
@@ -24,16 +24,17 @@
 						<span>总重约<span class="totalWeight">{{weight}}</span>kg</span>
 					</p>
 					<li v-for="item in product.products" class="lis">
-						<input type="checkbox" class="choise option" />
+						<input type="checkbox" class="choise option" checked="checked"/>
 						<div class="product">
 							<a href="#"><img :src="item.photo"/></a>
 							<a href="#" class="name">{{item.name}}</a>
 							<p>
 								<span class="zhiliang1">{{item.volume}}</span>
-								<span class="zhiliang2">{{item.weight}}kg</span>
+								<span class="zhiliang2">{{item.weight}}</span>kg
 							</p>
 							<p>
-								<span>¥</span><span class="price">{{item.price}}</span>
+								<span>¥</span>
+								<span class="price">{{item.price}}</span>
 								<a href="#" class="time">{{item.delivery_tag}}</a>
 							</p>
 						</div>
@@ -48,7 +49,7 @@
 				</ul>
 				<div class="closing">
 					<p>
-						<input type="checkbox" class="checkAll options"/><span>全选</span>
+						<input type="checkbox" class="checkAll options" checked="checked"/><span>全选</span>
 					</p>
 					<p>
 						<span>
@@ -70,13 +71,23 @@
 				<a href="#" value="true" class="ok">确定</a>
 			</p>
 		</div>
+		<div id="address">
+			<p>
+				<span class="iconfont icon-cuohao clos"></span>
+				<span>收货地址</span>
+				<span></span>
+			</p>
+			<a href="javascript:;">
+				新增收货地址
+			</a>
+		</div>
 		<footer>
         <ul>
             <router-link :to="{name:'Home'}" class="rl">
             <i class="iconfont icon-weibiaoti1"></i>
             <a href="javascript:;">首页</a>
           </router-link>
-          <router-link :to="{name:'FenLei',params:{fid:303}}" class="rl">
+          <router-link :to="{name:'FenLei'}" class="rl">
             <i class="iconfont icon-fenlei"></i>
             <a href="javascript:;">分类</a>
          </router-link>
