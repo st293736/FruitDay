@@ -23,7 +23,7 @@ export default {
         //取到他们每个的id，让他们根据id取出数据
         var id = this.$route.params.fid;
         //console.log(id);
-        axios.get(`/v3/product/category_list?store_id_list=3&class_id=`)
+        axios.get(`/v3/product/category_list?store_id_list=3&class_id=${id}`)
         .then((res) => {
           //左侧
           this.OG = res.data.data.classOneGroup;
@@ -40,6 +40,11 @@ export default {
         setTimeout(function(){
         // this.$nextTick(()=>{
           //点击左侧切换
+//      $(".L_li").eq(0).css({
+//      	 "color" : "green",
+//	          "background" : "#fff",
+//	          "border-left" : "2px solid green"
+//      })
       $(".L_li").click(function(){
         
         //点击时取到axios的数据
@@ -76,7 +81,7 @@ export default {
         $("._right").eq(ind).siblings("._right").hide();  
       })
     // })
-      },300)
+      },100)
     }
       
     

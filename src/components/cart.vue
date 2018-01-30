@@ -87,7 +87,7 @@
             <i class="iconfont icon-weibiaoti1"></i>
             <a href="javascript:;">首页</a>
           </router-link>
-          <router-link :to="{name:'FenLei'}" class="rl">
+          <router-link :to="{name:'FenLei',params:{fid: 303}}" class="rl">
             <i class="iconfont icon-fenlei"></i>
             <a href="javascript:;">分类</a>
          </router-link>

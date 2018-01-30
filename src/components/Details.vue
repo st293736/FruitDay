@@ -14,7 +14,7 @@
   	<main class="mai">
   		<div class="referral">
   			<mt-swipe :auto="4000">
-			  <mt-swipe-item  v-for="trtr in tu">
+			  <mt-swipe-item  v-for="(trtr,index) in tu" :key="index">
 			  	<img :src="trtr.image" alt="" />
 			  </mt-swipe-item>
 			</mt-swipe>
