@@ -41,7 +41,7 @@ export default{
 					alert('failed'+this.getStatus());
 				}        
 			},{enableHighAccuracy: true})
-			axios.get(`/v3/ad/homepage?connect_id=&type=0&lonlat=116.25153%2C40.11623&ad_code=110114&tab_id=`)
+			axios.get('/v3/ad/homepage?connect_id=kms9kldda5j6nr7n33rjg5h964&type=0&lonlat=116.25153%2C40.11623&ad_code=110114&tab_id=')
 			.then((res)=>{
 			this.lunbo = res.data.data.banner.mainBanners[0].content;
 			this.activity = res.data.data.banner.mainBanners[2].content;
@@ -55,6 +55,7 @@ export default{
 			this.meatSwiper = res.data.data.banner.mainBanners[16].content;
 			this.fastfoodSwiper = res.data.data.banner.mainBanners[18].content;
 			this.popularList = res.data.data.banner.mainBanners[20].content;
+			console.log(this.popularList);
 //			console.log(res)
 			this.$nextTick(()=>{
 				var mySwiper = new Swiper('.swiper-container', {

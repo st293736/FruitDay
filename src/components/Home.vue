@@ -256,7 +256,7 @@
 					<router-link to="/"><img src="../assets/img/home/home_popular.jpg"/></router-link>
 				</div>
 				<div class="popular-list">
-					<router-link to="/" v-for="(item,index) in popularList" :key="index">
+					<router-link :to="{name:'Details',params:{a:item.target_id}}" v-for="(item,index) in popularList" :key="index">
 						<dl>
 							<dt>
 								<img :src="item.image"/>
