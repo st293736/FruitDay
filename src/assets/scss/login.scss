@@ -1,0 +1,158 @@
+#login{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: url(../assets/img/imgS/login-bg.png);
+    background-size: 100% auto;
+    .nav-header{
+        background: transparent;
+        border-bottom: none;        
+        color: #75a739;
+        height: .45rem;
+        line-height: .43rem;
+        width: 100%;
+        display: box;
+    .header{
+            display: flex;
+            a{
+                padding-left: 0.1rem;
+                 width: .88rem;
+                color: #75a739;
+                display: inline-block;
+                font-size: .22rem;
+            }
+            .person-title{
+                width: 1.5rem;
+                line-height: 0.46rem;
+                text-align: center;
+                font-size: .17rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+           
+           }
+        }
+    }
+    section{
+        flex: 1;
+        position: relative;
+        form{
+            position: absolute;
+                top: 50%;
+            right: auto;
+            bottom: auto;
+            left: auto;
+            position: absolute;
+            margin-top: -1.35rem;
+            width: 100%;
+            padding: 0 8%;
+            .phoneNum{
+                width: 100%;
+                height: .3rem;
+                margin: .1rem 0;
+                border-bottom: .01rem solid #d8d8d8;
+                i{
+                    float: left;
+                    color: #878787;
+                    font-size: .22rem;
+                    margin-right: .1rem;
+                    line-height: .25rem;
+                }
+                input{
+                    padding-left: 0.05rem;
+                    background: none;
+                    float: left;
+                    width: 1rem;
+                    font-size: .12rem;
+                    line-height: .25rem;
+                    color: #878787;
+                    height: .25rem;
+                    border: none;
+                }
+                span{
+                    float: right;
+                    width: .7rem;
+                    height: .25rem;
+                    margin-left: .1rem;
+                    border-radius: .02rem;
+                    background: #bfbfbf;
+                    line-height: .25rem;
+                    font-size: .12rem;
+                    color: #fff;
+                    text-align: center;
+                }
+                .bright{
+                        background: #f93;
+                        color: #fff;
+                }
+            }
+            .nodePass{
+                width: 100%;
+                height: .25rem;
+                margin: .1rem 0;
+                border-bottom: .01rem solid #d8d8d8;
+                i{
+                    float: left;
+                    color: #878787;
+                    font-size: .22rem;
+                    margin-right: .1rem;
+                    line-height: .25rem;
+                }
+                input{
+                    background: none;
+                    padding-left: 0.05rem;
+                    float: left;
+                    width: 1rem;
+                    font-size: .12rem;
+                    line-height: .25rem;
+                    color: #878787;
+                    height: .25rem;
+                    border: none;
+                }
+                .code{
+                     float: right;
+                    width: .7rem;
+                    height: .25rem;
+                    margin-left: .1rem;
+                    border-radius: .02rem;
+                    background: #bfbfbf;
+                    line-height: .25rem;
+                    font-size: .16rem;
+                    color: #fff;
+                    text-align: center;
+                    
+                }
+            }
+            p{
+                height: .2rem;
+                line-height: .2rem;
+                font-size: .1rem;
+                color: #878787;
+            }
+            button{
+                display: block;
+                width: 100%;
+                height: .4rem;
+                margin: .5rem 0 .15rem;
+                border-radius: .02rem;
+                background: #bfbfbf;
+                line-height: .4rem;
+                font-size: .16rem;
+                color: #fff;
+                text-align: center;
+            }
+            .table{
+                .left{
+                    float: left;
+                }
+                .right{
+                    float: right;
+                }
+                a{
+                    font-size: .12rem;
+                    color: #f93;
+                }
+            }
+        }
+    }
+}

@@ -8,6 +8,8 @@ import Search from '@/components/Search';
 import FenLei from '@/components/FenLei';
 import Details from '@/components/Details';
 import Address from '@/components/Address';
+import Login from '@/components/Login';
+import PersonInfo from '@/components/PersonInfo';
 Vue.use(Router)
 
 export default new Router({
@@ -47,6 +49,16 @@ mode:"hash",
       path:'/address',
       name : 'Address',
       component : Address
-    }
+    },
+    {
+      path:'/login',
+      name : 'Login',
+      component : Login
+    },
+     {
+      path:'/personInfo',
+      name : 'PersonInfo',
+      component : PersonInfo
+    } ,
   ]
 })
