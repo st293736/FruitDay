@@ -7,7 +7,7 @@ export default{
 		}
 	},
 	mounted(){
-		axios.get("/v3/user/detail?connect_id=66vlo9gbgm8p19jn97c4s6o330")
+		axios.get("/v3/user/detail?connect_id=kms9kldda5j6nr7n33rjg5h964")
 		.then((response)=>{
 			this.user = response.data.data;
 		})

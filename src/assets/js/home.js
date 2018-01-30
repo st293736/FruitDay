@@ -41,7 +41,7 @@ export default{
 					alert('failed'+this.getStatus());
 				}        
 			},{enableHighAccuracy: true})
-			axios.get(`/v3/ad/homepage?connect_id=dprm418i5at8kmllvvvs0s1950&type=0&lonlat=116.25153%2C40.11623&ad_code=110114&tab_id=`)
+			axios.get(`/v3/ad/homepage?connect_id=&type=0&lonlat=116.25153%2C40.11623&ad_code=110114&tab_id=`)
 			.then((res)=>{
 			this.lunbo = res.data.data.banner.mainBanners[0].content;
 			this.activity = res.data.data.banner.mainBanners[2].content;

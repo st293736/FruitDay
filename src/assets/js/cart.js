@@ -19,11 +19,10 @@ export default{
 	},
 	mounted(){
 		var that = this;
-		axios.get("/v3/cart/get?connect_id=66vlo9gbgm8p19jn97c4s6o330&store_id_list=3&item_id=")
+		axios.get("/v3/cart/get?connect_id=m4vea4pl6tfooalkaqo1j9sfs5&store_id_list=3&item_id=")
 		.then((response)=>{
-//			console.log(response);
 			this.product = response.data.cart;
-//			console.log(this.product);
+			
 			if(this.product.length == 0){
 				this.showflag = true;
 			}else{
@@ -42,12 +41,43 @@ export default{
 		this.$nextTick(()=>{
 			//全选
 			$(".checkAll").click(function(){
-				if($(this).attr("checked") != "checked"){
-					$(this).attr("checked","checked");
-					$(this).parents(".closing").siblings("ul").children("li").children("input").attr("checked","checked");
-				}else{
-					$(this).removeAttr("checked");
+				console.log($(this).prop("checked"));
+				if($(this).prop("checked") == false){
+					console.log(1);
+					$(this).remove("checked");
 					$(this).parents(".closing").siblings("ul").children("li").children("input").removeAttr("checked");
+					//全不选
+					//价格
+					var sum_money= $(this).parents("p").siblings("p").children("span").children("span:eq(1)").html();
+					var endMoney = Number(sum_money);
+//					console.log(endMoney);
+					//数量
+					var sumNum = Number($(this).parent("p").siblings("p").children("a").children("span").html());
+					$(this).parents(".closing").siblings("ul").children("li").each(function(index,value){
+						var everyMoney = parseFloat($(this).children(".product").children("p:eq(1)").children("span:eq(1)").html()).toFixed(2) * parseInt($(this).children(".number").children("p").children("span").html());
+						endMoney -= everyMoney;
+						$(this).parents("ul").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html(Number(endMoney.toFixed(2)));
+						var everyNum = Number($(this).children(".number").children("p").children("span").html());
+						sumNum -= everyNum;
+						$(this).parents("ul").siblings(".closing").children("p").children("a").children("span").html(sumNum);
+					})
+					
+				}else{
+					$(this).prop("checked",true);
+					$(this).parents(".closing").siblings("ul").children("li").children("input").attr("checked","checked");
+					//全选
+					var sum_money= $(this).parents("p").siblings("p").children("span").children("span:eq(1)").html();
+					var endMoney = Number(sum_money);
+					//数量
+					var sumNum = Number($(this).parent("p").siblings("p").children("a").children("span").html());
+					$(this).parents(".closing").siblings("ul").children("li").each(function(index,value){
+						var everyMoney = parseFloat($(this).children(".product").children("p:eq(1)").children("span:eq(1)").html()).toFixed(2) * parseInt($(this).children(".number").children("p").children("span").html());
+						endMoney += everyMoney;
+						$(this).parents("ul").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html(Number(endMoney.toFixed(2)));
+						var everyNum = Number($(this).children(".number").children("p").children("span").html());
+						sumNum += everyNum;
+						$(this).parents("ul").siblings(".closing").children("p").children("a").children("span").html(sumNum);
+					})
 				}
 			})
 		})
@@ -55,32 +85,9 @@ export default{
 				//单选
 				$(".option").each(function(index,value){
 					$(this).click(function(){
-						if($(this).attr("checked") != "checked"){
-							$(this).attr("checked","checked");
-							$(".option").each(function(index,value){
-								if($(this).attr("checked")!= "checked"){
-									$(this).parents("ul").siblings(".closing").children("p:eq(0)").children("input").removeAttr("checked");
-								}else{
-									$(this).parents("ul").siblings(".closing").children("p:eq(0)").children("input").attr("checked","checked");
-								}
-							})
-							//总商品数移出该商品数
-							var str = parseInt($(this).parents("ul").siblings(".closing").children("p:eq(1)").children("a").children("span").html());
-							//剩余商品数
-							var residue = str + parseInt($(this).siblings(".number").children("p").children("span").html())
-							$(this).parents("ul").siblings(".closing").children("p:eq(1)").children("a").children("span").html(residue);
-							//总重量移出数
-							var weight = Number($(this).parents("li").siblings("p").children("span:eq(1)").children("span").html());
-							//当前商品重量
-							var weight_one = Number($(this).siblings(".product").children("p:eq(0)").children("span:eq(1)").html() * Number($(this).siblings(".number").children("p").children("span").html()));
-							$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight + weight_one);
-							//当前显示的总价格
-							var money = Number($(this).parents("ul").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html());
-							//该商品的总价格
-							var money_one = (Number($(this).siblings(".product").children("p:eq(1)").children("span:eq(1)").html()) * Number($(this).siblings(".number").children("p").children("span").html()));
-							$(this).parents("ul").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html(parseFloat(money + money_one).toFixed(2));
-						}else{
-							$(this).removeAttr("checked");
+						console.log($(this).prop("checked"))
+						if($(this).prop("checked") == false){
+							$(this).prop("checked",false);
 							$(this).parents("ul").siblings(".closing").children("p:eq(0)").children("input").removeAttr("checked");
 							//总商品数移出该商品数
 							var str = parseInt($(this).parents("ul").siblings(".closing").children("p:eq(1)").children("a").children("span").html());
@@ -97,6 +104,25 @@ export default{
 							//该商品的总价格
 							var money_one = (Number($(this).siblings(".product").children("p:eq(1)").children("span:eq(1)").html()) * Number($(this).siblings(".number").children("p").children("span").html()));
 							$(this).parents("ul").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html(parseFloat(money - money_one).toFixed(2));
+							
+						}else{
+							$(this).prop("checked","checked");
+							$(this).parents("ul").siblings(".closing").children("p:eq(0)").children("input").prop("checked","checked");
+							//总商品数移出该商品数
+							var str = parseInt($(this).parents("ul").siblings(".closing").children("p:eq(1)").children("a").children("span").html());
+							//剩余商品数
+							var residue = str + parseInt($(this).siblings(".number").children("p").children("span").html())
+							$(this).parents("ul").siblings(".closing").children("p:eq(1)").children("a").children("span").html(residue);
+							//总重量移出数
+							var weight = Number($(this).parents("li").siblings("p").children("span:eq(1)").children("span").html());
+							//当前商品重量
+							var weight_one = Number($(this).siblings(".product").children("p:eq(0)").children("span:eq(1)").html() * Number($(this).siblings(".number").children("p").children("span").html()));
+							$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight + weight_one);
+							//当前显示的总价格
+							var money = Number($(this).parents("ul").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html());
+							//该商品的总价格
+							var money_one = (Number($(this).siblings(".product").children("p:eq(1)").children("span:eq(1)").html()) * Number($(this).siblings(".number").children("p").children("span").html()));
+							$(this).parents("ul").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html(parseFloat(money + money_one).toFixed(2));
 						}
 					})
 				})
@@ -113,7 +139,8 @@ export default{
 							var names = $(this).parents(".number").siblings(".product").children(".name").html();
 							$("#hint .names").html(names);
 							var index = $(this).parents(".lis").index() - 1;
-							control(index);
+							var n = control(index);
+							console.log(n);
 							$("#tilt").css("display","block");
 							$("#hint").css("display","flex");
 						}
@@ -165,20 +192,23 @@ export default{
 			},1000)
 		
 		function control(index){
+			var n = 0;
 			//取消
 			$(".cls").click(function(){
-
 				$("#tilt").css("display","none");
 				$("#hint").css("display","none");
+				n = 1;
 			})
 			//确定
 			$(".ok").click(function(){
-				console.log($("ul li").eq(index));
+//				console.log($("ul li").eq(index));
 				$("ul li").eq(index).remove();
 				var dename = $(this).parent().siblings().children("span").html();
 				$("#tilt").css("display","none");
 				$("#hint").css("display","none");
+				n = 2;
 			})
+			return n;
 		}
 	},
 	
