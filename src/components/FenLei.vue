@@ -19,10 +19,11 @@
         </div>
         <div class="_right" >
          <div class="BT">
-            <h3 class="titD" v-for="ta in list">
-              {{ta.name}}
+            <h3 class="titD" v-for="yy in list">
+              {{yy.name}}
           </h3>
-          <span>全部<i class="iconfont icon-guanbi"></i></span>
+            <span   @click="QB(list.class3Group[0].class2Id)" class="sp">全部<i class="iconfont icon-guanbi"></i>
+            </span>
          </div>
           <dl id="r" v-for="items in list.class3Group">
             <dt><img :src="items.class_photo" alt=""></dt>

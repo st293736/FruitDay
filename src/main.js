@@ -6,6 +6,7 @@ import router from './router'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import './assets/iconfont/iconfont.css'
+import './assets/js/isscroll.js'
 
 Vue.use(MintUI)
 Vue.config.productionTip = false

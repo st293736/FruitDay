@@ -12,7 +12,11 @@ export default {
       showToggle(id){
          // console.log(this);
           this.$router.history.push({name:'FenLei', params:{fid: id}});
-      }
+          
+      },
+     QB(id){
+        this.$router.history.push({name:'All', params:{all: id}});
+     }
     },
     mounted(){
         var that = this;
@@ -26,7 +30,7 @@ export default {
           //console.log(this.OG);
           //右侧
           this.list = res.data.data.childrenList[0];
-          console.log(res.data.data.childrenList[0].class3Group);
+          console.log(this.list);
         })
         .catch((error) => {
           console.log(error);
