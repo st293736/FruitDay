@@ -33,7 +33,7 @@
 				<div class="hot-title">
 					<router-link to="/"><img src="../assets/img/home/home_hot.jpg"/></router-link>
 				</div>
-				<!--<div class="hot-show">
+				<div class="hot-show">
 					<router-link to="/" v-for="(item,index) in hot" :key="index">
 						<dl>
 							<dt>
@@ -47,12 +47,13 @@
 										{{item.price}}/
 										<em>{{item.volume}}</em>
 									</span>
-									<i class="addcart"></i>
+									<i class="addcart iconfont"  @click.self.prevent.stop="addCart(hot[index])">
+									</i>
 								</div>
 							</dd>
 						</dl>
 					</router-link>
-				</div>-->
+				</div>
 				<div class="hot-swiper">
 					<div class="swiper-container">
 					  <div class="swiper-wrapper">
@@ -72,8 +73,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont">
-					    				&#xe634;
+					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart(hotSwiper[index])">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -110,8 +110,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont">
-					    				&#xe634;
+					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart(newsSwiper[index])">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -147,8 +146,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont">
-					    				&#xe634;
+					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart(fruitSwiper[index])">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -178,8 +176,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont">
-					    				&#xe634;
+					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart(seafoodSwiper[index])">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -209,8 +206,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont">
-					    				&#xe634;
+					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart(meatSwiper[index])">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -240,8 +236,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont">
-					    				&#xe634;
+					    			<i class="addcart iconfont" @click.self.prevent.stop="addCart(fastfoodSwiper[index])">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -269,8 +264,7 @@
 										{{item.price}}/
 										<em>{{item.volume}}</em>
 									</span>
-									<i class="addcart iconfont">
-										&#xe634;
+									<i class="addcart iconfont" @click.self.prevent.stop="addCart(popularList[index])">
 									</i>
 								</div>
 							</dd>
@@ -290,6 +284,7 @@
             <a href="javascript:;">分类</a>
          </router-link>
          <router-link :to="{name:'cart'}" class="rl">
+         	<em class="cartnum">{{$store.state.cartData.length}}</em>
             <i class="iconfont icon-03"></i>
             <a href="javascript:;">购物车</a>
          </router-link>
@@ -300,6 +295,7 @@
         </ul>
     </footer>
 	</div>
+	
 </template>
 
 <script src="../assets/js/home.js">
