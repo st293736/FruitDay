@@ -47,21 +47,41 @@
 						</div>
 					</li>
 				</ul>
-				<div class="closing">
-					<p>
-						<input type="checkbox" class="checkAll options" checked="checked"/><span>全选</span>
-					</p>
-					<p>
-						<span>
-							<span>合计：</span>
-							¥<span class="money">{{price.toFixed(2)}}</span>
-						</span>
-						<a href="#">立即结算(<span class="sum">{{product.count}}</span>)</a>
-					</p>
-				</div>
 			</div>
 		</section>
-		<div id="tilt"></div>
+		<div class="closing" v-if="!showflag">
+			<p>
+				<input type="checkbox" class="checkAll options" checked="checked"/><span>全选</span>
+			</p>
+			<p>
+				<span>
+					<span>合计：</span>
+					¥<span class="money">{{price.toFixed(2)}}</span>
+				</span>
+				<a href="#">立即结算(<span class="sum">{{product.count}}</span>)</a>
+			</p>
+		</div>
+		<footer>
+        <ul>
+            <router-link :to="{name:'Home'}" class="rl">
+            <i class="iconfont icon-weibiaoti1"></i>
+            <a href="javascript:;">首页</a>
+          </router-link>
+          <router-link :to="{name:'FenLei',params:{fid: 303}}" class="rl">
+            <i class="iconfont icon-fenlei"></i>
+            <a href="javascript:;">分类</a>
+         </router-link>
+         <router-link :to="{name:'cart'}" class="rl">
+            <i class="iconfont icon-03"></i>
+            <a href="javascript:;">购物车</a>
+         </router-link>
+          <router-link :to="{name:'self'}" class="rl">
+            <i class="iconfont icon-huiyuan"></i>
+            <a href="javascript:;">我的果园</a>
+          </router-link>
+        </ul>
+    </footer>
+    <div id="tilt"></div>
 		<div id="hint">
 			<p>
 				确定要删除<span class="names">xxxx</span>？
@@ -81,27 +101,6 @@
 				新增收货地址
 			</a>
 		</div>
-		<footer>
-        <ul>
-            <router-link :to="{name:'Home'}" class="rl">
-            <i class="iconfont icon-weibiaoti1"></i>
-            <a href="javascript:;">首页</a>
-          </router-link>
-          <router-link :to="{name:'FenLei',params:{fid: 303}}" class="rl">
-            <i class="iconfont icon-fenlei"></i>
-            <a href="javascript:;">分类</a>
-         </router-link>
-         <router-link :to="{name:'cart'}" class="rl">
-         	<em class="cartnum">{{$store.state.cartData.length}}</em>
-            <i class="iconfont icon-03"></i>
-            <a href="javascript:;">购物车</a>
-         </router-link>
-          <router-link :to="{name:'self'}" class="rl">
-            <i class="iconfont icon-huiyuan"></i>
-            <a href="javascript:;">我的果园</a>
-          </router-link>
-        </ul>
-    </footer>
 	</div>
 </template>
 
