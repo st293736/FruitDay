@@ -6,12 +6,13 @@ export default {
     return {
       list : [],
       tit : null,
-      eve : {}
+      eve : {},
+      flag : false
     }
   },
   mounted(){
 	//axios
-	console.log(this.$route.params.all);
+	//console.log(this.$route.params.all);
 	var id = this.$route.params.all;
 	axios.get(`/v3/product/sub_category_list?store_id_list=3&class2_id=${id}&class3_id=0&sort_type=1&tms_region_type=1`)
 	.then((res) => {
@@ -19,7 +20,7 @@ export default {
 	   this.list = res.data.data.brotherClass;
 	   this.tit = res.data.data.fatherClass;
 	   this.eve = res.data.data.productGroup;
-	   console.log(res);
+	   //console.log(res);
 	})
 	.catch(function (error) {
 	  console.log(error);
@@ -36,8 +37,8 @@ export default {
 	},500)
   },
   methods : {
-  	showToggle :  function(){
-  		console.log(this)
+  	showToggle :  function(index){
+  		this.flag = index;
   	}
   }
 } 

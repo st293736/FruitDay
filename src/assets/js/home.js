@@ -100,7 +100,7 @@ export default{
 			this.meatSwiper = res.data.data.banner.mainBanners[17].content;
 			this.fastfoodSwiper = res.data.data.banner.mainBanners[19].content;
 			this.popularList = res.data.data.banner.mainBanners[21].content;
-			console.log(this.popularList);
+			//console.log(this.hotSwiper);
 //			console.log(res)
 			this.$nextTick(()=>{
 				var mySwiper = new Swiper('.swiper-container', {

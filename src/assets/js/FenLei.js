@@ -27,11 +27,11 @@ export default {
         .then((res) => {
           //左侧
           this.OG = res.data.data.classOneGroup;
-          console.log(this.OG);
+          //console.log(this.OG);
           //右侧
           this.list = res.data.data.childrenList[0];
          // console.log(res);
-          console.log(this.list);
+          //console.log(this.list);
          
 
         })

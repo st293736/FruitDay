@@ -11,9 +11,9 @@
 					</div>
 				</router-link>
 			</div>
-			<div class="home-search">
+			<router-link :to="{name:'Search'}" class="home-search">
 				<i class="iconfont">&#xe60e;</i>
-			</div>
+			</router-link>
 		</header>
 		<section>
 			<div class="home-swiper">
@@ -34,7 +34,7 @@
 					<router-link to="/"><img src="../assets/img/home/home_hot.jpg"/></router-link>
 				</div>
 				<div class="hot-show">
-					<router-link to="/" v-for="(item,index) in hot" :key="index">
+					<router-link :to="{name:'Details',params:{a:item.target_id}}" v-for="(item,index) in hot" :key="index">
 						<dl>
 							<dt>
 								<img :src="item.image"/>
@@ -58,7 +58,7 @@
 					<div class="swiper-container">
 					  <div class="swiper-wrapper">
 					    <div class="swiper-slide" v-for="(item,index) in hotSwiper" :key="index">
-					    	<router-link to="/">
+					    	<router-link :to="{name:'Details',params:{a:item.target_id}}">
 					    		<div class="img-box">
 						    		<img :src="item.image"/>
 					    		</div>
@@ -95,7 +95,7 @@
 					<div class="swiper-container">
 					  <div class="swiper-wrapper">
 					    <div class="swiper-slide" v-for="(item,index) in newsSwiper" :key="index">
-					    	<router-link to="/">
+					    	<router-link :to="{name:'Details',params:{a:item.target_id}}">
 					    		<div class="img-box">
 						    		<img :src="item.image"/>
 					    		</div>
@@ -131,7 +131,7 @@
 					<div class="swiper-container">
 					  <div class="swiper-wrapper">
 					    <div class="swiper-slide" v-for="(item,index) in fruitSwiper" :key="index">
-					    	<router-link to="/">
+					    	<router-link :to="{name:'Details',params:{a:item.target_id}}">
 					    		<div class="img-box">
 						    		<img :src="item.image"/>
 					    		</div>
@@ -161,7 +161,7 @@
 					<div class="swiper-container">
 					  <div class="swiper-wrapper">
 					    <div class="swiper-slide" v-for="(item,index) in seafoodSwiper" :key="index">
-					    	<router-link to="/">
+					    	<router-link :to="{name:'Details',params:{a:item.target_id}}">
 					    		<div class="img-box">
 						    		<img :src="item.image"/>
 					    		</div>
@@ -191,7 +191,7 @@
 					<div class="swiper-container">
 					  <div class="swiper-wrapper">
 					    <div class="swiper-slide" v-for="(item,index) in meatSwiper" :key="index">
-					    	<router-link to="/">
+					    	<router-link :to="{name:'Details',params:{a:item.target_id}}">
 					    		<div class="img-box">
 						    		<img :src="item.image"/>
 					    		</div>
@@ -221,7 +221,7 @@
 					<div class="swiper-container">
 					  <div class="swiper-wrapper">
 					    <div class="swiper-slide" v-for="(item,index) in fastfoodSwiper" :key="index">
-					    	<router-link to="/">
+					    	<router-link :to="{name:'Details',params:{a:item.target_id}}">
 					    		<div class="img-box">
 						    		<img :src="item.image"/>
 					    		</div>

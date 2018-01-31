@@ -18,7 +18,7 @@
 			  	<img :src="trtr.image" alt="" />
 			  </mt-swipe-item>
 			</mt-swipe>
-  			<div class="content">
+  			<div class="content" v-if="lists">
   				<h2>{{lists.product_name}}</h2>
   				<p>{{lists.product_desc}}</p>
   				<div class="spi">

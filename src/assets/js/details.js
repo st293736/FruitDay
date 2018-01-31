@@ -33,11 +33,11 @@ export default {
     //评价的axios
     axios.get(`/v3/comment/rate_and_comment?product_id=${id}`)
     .then((res) => {
-      console.log(res);
+      //console.log(res);
       this.PingJ = res.data.data.num;
       this.gd = res.data.data.good;
       this.JuTi = res.data.data.data;
-      console.log(this.JuTi)
+      //console.log(this.JuTi)
     })
     .catch(function (error) {
       console.log(error);
@@ -61,7 +61,7 @@ export default {
   	//明日达按钮
   	this.$nextTick(function(){
 	  	$(".bao").on("click",".con_L",function(){
-	  		console.log($(this));
+	  		//console.log($(this));
 	  		$(this).css({
 	  			"background" : "#ff8000",
 	  			"color" : "#fff"
