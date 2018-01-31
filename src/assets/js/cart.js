@@ -23,18 +23,15 @@ export default{
 		.then((response)=>{
 			this.product = response.data.cart;
 //			this.product.length = 0;
-			console.log(this.product);
+			console.log(response);
 			if(this.product.length == 0){
 				this.showflag = true;
 			}else{
+				this.weight = Number(response.data.cart.total.weight)
 				//计算总重,总价格,总产品件数
 				var length = response.data.cart.products.length;
-				for(var i = 0;i < length; i ++){
-	//				console.log(response.data.cart.products[i].weight);
-					this.weight += Number(response.data.cart.products[i].weight) * Number(response.data.cart.products[i].qty);
-					this.price += Number(response.data.cart.products[i].price) * Number(response.data.cart.products[i].qty);
-				}
-				this.number = length;
+				this.price = Number(response.data.cart.total.normal_price);
+				this.number = Number(response.data.cart.total.selected);
 			}
 		}).catch(function(err){
 			console.log(err);
@@ -154,27 +151,27 @@ export default{
 							$("#hint .names").html(names);
 							var index = $(this).parents(".lis").index() - 1;
 							var n = control(index);
-							console.log(n);
 							$("#tilt").css("display","block");
 							$("#hint").css("display","flex");
+						}else{
+							//获取显示的总重量
+							var weight = Number($(this).parents("li").siblings("p").children("span:eq(1)").children("span").html());
+							//当前商品的总重量
+							var str = Number($(this).parents(".number").siblings(".product").children("p:eq(0)").children("span:eq(1)").html());
+							weight = weight - str;
+							$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight);
+							//获取当前的总价格
+							var money = Number($(this).parents("section").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html());
+							//每个商品的总价格
+							var unit = Number($(this).parents(".number").siblings(".product").children("p:eq(1)").children("span:eq(1)").html());
+							money = (money.toFixed(2) - unit.toFixed(2)).toFixed(2);
+							$(this).parents("section").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html(money);
+							//获取当前商品总数量
+							var num = Number($(this).parents("section").siblings(".closing").children("p:eq(1)").children("a").children("span").html());
+							//获取当前商品的数量
+							num = num - 1;
+							$(this).parents("section").siblings(".closing").children("p:eq(1)").children("a").children("span").html(num);
 						}
-						//获取显示的总重量
-						var weight = Number($(this).parents("li").siblings("p").children("span:eq(1)").children("span").html());
-						//当前商品的总重量
-						var str = Number($(this).parents(".number").siblings(".product").children("p:eq(0)").children("span:eq(1)").html());
-						weight = weight - str;
-						$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight);
-						//获取当前的总价格
-						var money = Number($(this).parents("section").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html());
-						//每个商品的总价格
-						var unit = Number($(this).parents(".number").siblings(".product").children("p:eq(1)").children("span:eq(1)").html());
-						money = (money.toFixed(2) - unit.toFixed(2)).toFixed(2);
-						$(this).parents("section").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html(money);
-						//获取当前商品总数量
-						var num = Number($(this).parents("section").siblings(".closing").children("p:eq(1)").children("a").children("span").html());
-						//获取当前商品的数量
-						num = num - 1;
-						$(this).parents("section").siblings(".closing").children("p:eq(1)").children("a").children("span").html(num);
 					})
 				})
 				$(".add").each(function(index,value){
@@ -226,7 +223,26 @@ export default{
 			})
 			//确定
 			$(".ok").click(function(){
-//				console.log($("ul li").eq(index));
+				var sp = $("ul li").eq(index).children(".number").children("p").children("span");
+				//获取显示的总重量
+				var weight = Number($(sp).parents("li").siblings("p").children("span:eq(1)").children("span").html());
+				//当前商品的总重量
+				var str = Number($(sp).parents(".number").siblings(".product").children("p:eq(0)").children("span:eq(1)").html());
+				weight = weight - str;
+				$(sp).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight);
+				//获取当前的总价格
+				var money = Number($(sp).parents("section").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html());
+				//每个商品的总价格
+				var unit = Number($(sp).parents(".number").siblings(".product").children("p:eq(1)").children("span:eq(1)").html());
+				money = (money.toFixed(2) - unit.toFixed(2)).toFixed(2);
+				$(sp).parents("section").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html(money);
+				//获取当前商品总数量
+				var num = Number($(sp).parents("section").siblings(".closing").children("p:eq(1)").children("a").children("span").html());
+				//获取当前商品的数量
+				num = num - 1;
+				$(sp).parents("section").siblings(".closing").children("p:eq(1)").children("a").children("span").html(num);
+				
+				
 				$("ul li").eq(index).remove();
 				var dename = $(this).parent().siblings().children("span").html();
 				$("#tilt").css("display","none");
