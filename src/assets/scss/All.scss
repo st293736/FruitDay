@@ -75,8 +75,8 @@
 	      height:1.24rem;
 	      padding:0.09rem 0.1rem 0.1rem 0.1rem;
 	      .p1{
-	        width:1rem;
-	        height:1rem;
+	        width:0.8rem;
+	        height:0.8rem;
 	        position:relative;
 	        float:left;
 	        margin-right:0.1rem;
@@ -102,9 +102,10 @@
 	      }
 	      .p2{
 	      	#zi{
-	      	  font-size:14px;
+	      	  font-size:11px;
 	      	  color:#3a3a3a;
 	      	  float:left;
+	      	  overflow:hidden;
 	      	}
 	      	em{
 	      	  font-size:0.11rem;
@@ -118,10 +119,32 @@
 	      	  line-height:0rem;
 	      	  float:left;
 	      	}
-	      	.p2_p1{
-	      	  color:#ff8000;
+	      	#pp{
+	      	   color:#ff8000;
+	      	   font-size:0.09rem;
 	      	  .span1{
-	      	    font-size:12px;
+	      	    font-size:0.15rem;
+	      	  }
+	      	  .i1{
+	      	    width:0.45rem;
+	      	    height:0.2rem;
+	      	    background:#ff8000;
+	      	    font-size:0.12rem;
+	      	    color:#ffffff;
+	      	    line-height:0.22rem;
+	      	    text-align:center;
+	      	    display:inline-block;
+	      	    border-radius:0.03rem;
+	      	  }
+	      	  .span2{
+	      	    display:inline-block;
+	      	    width:0.22rem;
+	      	    height:0.22rem;
+	      	    border-radius:50%;
+	      	    border:3px solid #dadada;
+	      	    line-height:0.18rem;
+	      	    text-align:center;
+	      	    float:right;
 	      	  }
 	      	}
 	      }

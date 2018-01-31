@@ -32,18 +32,18 @@
             <span v-if="aa.cart_tag">{{aa.cart_tag}}</span>
             <img :src="aa.bphoto" alt="">
           </p>
-          <p class="p2">
+          <div class="p2">
             <i id="zi">{{aa.product_name}}</i><br>
             <em>{{aa.product_desc}}</em><br>
             <b>{{aa.volume}}</b>
-            <p class="p2_p1">
+            <p id="pp">
               ¥<span class="span1">{{aa.price}}</span>
-              <i></i>
+              <i class="i1">明日达</i>
               <span class="span2">
                 <i class="iconfont icon-tianjia"></i>
               </span>
             </p>
-          </p>
+          </div>
         </li>
       </ul>
     </main>
