@@ -27,10 +27,13 @@ export default {
         .then((res) => {
           //左侧
           this.OG = res.data.data.classOneGroup;
-          //console.log(this.OG);
+          console.log(this.OG);
           //右侧
           this.list = res.data.data.childrenList[0];
+         // console.log(res);
           console.log(this.list);
+         
+
         })
         .catch((error) => {
           console.log(error);
@@ -40,11 +43,6 @@ export default {
         setTimeout(function(){
         // this.$nextTick(()=>{
           //点击左侧切换
-//      $(".L_li").eq(0).css({
-//      	 "color" : "green",
-//	          "background" : "#fff",
-//	          "border-left" : "2px solid green"
-//      })
       $(".L_li").click(function(){
         
         //点击时取到axios的数据
@@ -57,6 +55,7 @@ export default {
           //console.log(this.OG);
           //右侧
           that.list = res.data.data.childrenList[0];
+
         })
         .catch((error) => {
           console.log(error);

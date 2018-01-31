@@ -65,6 +65,11 @@ mode:"hash",
       path:'/personInfo',
       name : 'PersonInfo',
       component : PersonInfo
-    } 
+     }//,
+    // {
+    //   path:'/aa/:two',
+    //   name : 'All',
+    //   component : All
+    // } 
   ]
 })

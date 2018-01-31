@@ -1,23 +1,19 @@
 <template>
   <div class="All">
-  	<div class="a">
-     <i class="iconfont icon-fanhui y"></i>
+  	<div class="a" v-if="tit">
+     <router-link :to="{name:'FenLei',params:{fid:303}}" class="iconfont icon-fanhui y"></router-link>
      <span>{{tit.name}}</span> 
      <i class="iconfont icon-search e"></i>
     </div>
-    <div class="card_message_outer">  
-      <span style="white-space:pre"></span>
-      <div class="card_message_center" id="touchscroll_div">  
-        <span style="white-space:pre"></span>
-        <div class="card_message">  
-            <ul>
-              <li v-for="item in list">
-                {{item.name}}
-              </li>
-            </ul>  
-        </div>  
-      </div>  
-    </div>  
+
+    <div class="swiper-container" v-if="list">
+        <ul class="swiper-wrapper">
+            <li class="swiper-slide" style="width:10px;" v-for="item in list">
+              {{item.name}}
+            </li>
+        </ul>  
+      </div> 
+
     <div id="ZH">
       <ul>
         <li class="LL">综合</li>
@@ -26,8 +22,10 @@
       </ul>
     </div>
     <main>
+      
       <ul>
-        <li class="main_li" v-for="aa in eve">
+        <li  v-for="aa in eve">
+        <router-link class="main_li "  :to="{name:'Details',params:{a:aa.id}}">
           <p class="p1">
             <span v-if="aa.cart_tag">{{aa.cart_tag}}</span>
             <img :src="aa.bphoto" alt="">
@@ -44,6 +42,7 @@
               </span>
             </p>
           </div>
+        </router-link>
         </li>
       </ul>
     </main>

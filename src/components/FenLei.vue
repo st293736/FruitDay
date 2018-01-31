@@ -26,7 +26,8 @@
             </span>
          </div>
           <dl id="r" v-for="items in list.class3Group">
-            <dt><img :src="items.class_photo" alt=""></dt>
+            <dt class="ad"><img :src="items.class_photo" alt="">
+            </dt>
             <dd>{{items.name}}</dd>
           </dl>
         </div>
