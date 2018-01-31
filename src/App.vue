@@ -3,7 +3,7 @@
     	<router-view class="contant"/>
   </div>
 </template>
-
+ 
 <script>
 import FenLei from './components/FenLei';
 import $ from "./assets/javascripts/jquery.js";
