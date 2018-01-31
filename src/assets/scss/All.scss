@@ -4,6 +4,7 @@
 	display:flex;
 	flex-direction:column;
 	background:#f8f8f8;
+	overflow:hidden;
 	.a{
 	  width:100%;
 	  height:0.53rem;
@@ -18,34 +19,18 @@
 	    font-size:0.18rem;
 	  }
 	}
-	.card_message_outer {  
-	    width: 100%; 
-	    height:0.36rem; 
-	}  
-	  
-	.card_message_center {  
-	    height:0.36rem;
-	    width: 100%;   
-	    overflow-x: hidden;  
-	    overflow-y: scroll;  
-	    position: relative  
-	}  
-	  
-	.card_message {  
-	    width: 87%;  
-	    position: absolute;  
-	    line-height: 0.36rem;  
-	    font-size: 15px;  
-	    text-indent: 2em; 
-	} 
-	ul{
-	  width:900px;
+	.swiper-wrapper{
 	  background:#fff;
 	  height:0.36rem;
 	  line-height:0.36rem;
-	  li{
+	  width:1400px;
+	  
+	  .swiper-slide{
 	    float:left;
 	    font-size:0.135rem;
+	    overflow:hidden;
+	    height:0.36rem;
+	    margin:0 0.2rem;
 	  }
 	}
 	#ZH{
@@ -71,8 +56,10 @@
 	    width:100%;
 	    height:100%;
 	    .main_li{
+	      border-bottom:1px solid #ccc;
+	      display:block;
 	      width:100%;
-	      height:1.24rem;
+	      height:1.2rem;
 	      padding:0.09rem 0.1rem 0.1rem 0.1rem;
 	      .p1{
 	        width:1rem;
@@ -104,24 +91,46 @@
 	      	#zi{
 	      	  font-size:14px;
 	      	  color:#3a3a3a;
-	      	  float:left;
 	      	}
 	      	em{
 	      	  font-size:0.11rem;
 	      	  color:#878787;
-	      	  float:left;
-	      	  line-height:0.08rem;
 	      	}
 	      	b{
-	      	  displaay:block;
 	      	  font-size:0.12rem;
-	      	  line-height:0rem;
-	      	  float:left;
+	      	  display:block;
+	      	  width:100%;
+	      	  height:100%;
+	      	  margin-top:30px;
+	      	  color:#878787;
+	      	  margin-bottom:10px;
 	      	}
-	      	.p2_p1{
-	      	  color:#ff8000;
+	      	#pp{
+	      	   color:#ff8000;
+	      	   font-size:0.09rem;
 	      	  .span1{
-	      	    font-size:12px;
+	      	    font-size:0.15rem;
+	      	  }
+	      	  .i1{
+	      	    width:0.45rem;
+	      	    height:0.2rem;
+	      	    background:#ff8000;
+	      	    font-size:0.12rem;
+	      	    color:#ffffff;
+	      	    line-height:0.22rem;
+	      	    text-align:center;
+	      	    display:inline-block;
+	      	    border-radius:0.03rem;
+	      	  }
+	      	  .span2{
+	      	    display:inline-block;
+	      	    width:0.22rem;
+	      	    height:0.22rem;
+	      	    border-radius:50%;
+	      	    border:3px solid #dadada;
+	      	    line-height:0.18rem;
+	      	    text-align:center;
+	      	    float:right;
 	      	  }
 	      	}
 	      }

@@ -1,7 +1,7 @@
 <template>
   <div id="search">
     <div class="top">
-      <router-link :to="{name:'FenLei'}" class="top_L">
+      <router-link :to="{name:'FenLei',params:{fid:303}}" class="top_L">
        <i class="iconfont icon-fanhui"></i> 返回
       </router-link>
       <div class="top_C">
