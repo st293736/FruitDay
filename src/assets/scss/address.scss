@@ -59,6 +59,7 @@
                 font-size: .16rem;
                 text-align: center;
                 height: .33rem;
+                line-height: 0.32rem;
                 border-right: .01rem solid #dcdcdc;
                 em{
                     margin-left: .03rem;
@@ -80,6 +81,7 @@
                 margin-left: .8rem;
                 box-sizing: border-box;
                 position: relative;
+                display: flex;
                 background-color: #eee;
                 border-radius: .05rem;
                 color: #878787;

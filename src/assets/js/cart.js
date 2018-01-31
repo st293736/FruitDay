@@ -22,7 +22,7 @@ export default{
 		axios.get("/v3/cart/get?connect_id=m4vea4pl6tfooalkaqo1j9sfs5&store_id_list=3&item_id=")
 		.then((response)=>{
 			this.product = response.data.cart;
-			
+			console.log(this.product)
 			if(this.product.length == 0){
 				this.showflag = true;
 			}else{

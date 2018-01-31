@@ -15,7 +15,52 @@ export default{
 			seafoodSwiper:[],
 			meatSwiper:[],
 			fastfoodSwiper:[],
-			popularList:[]
+			popularList:[],
+			user:[]
+		}
+	},
+	methods:{
+//		addCart(goodsList,index){
+//			if(getCookie("username")){
+//			var cookieGet = JSON.parse(getCookie("username"));
+//			this.user = cookieGet;
+//			console.log(this.user);
+//			}else{
+//				console.log("no")
+//			}
+//			console.log(this[goodsList][index])
+//			var datas = new Object({
+//				username:this.user.mobile,
+//				name:this[goodsList][index].title,
+//				volume:this[goodsList][index].volume,
+//				weight:parseInt(this[goodsList][index].volume)/1000 + "kg",
+//				price:this[goodsList][index].price,
+//				qty: 1,
+//				photo:this[goodsList][index].image
+//			})
+//			console.log(datas);
+//			var dataStr = JSON.stringify(datas)
+//			axios.post("/addCart/addCart_ajax",datas)
+//			.then((res)=>{
+//				console.log(res)
+//				console.log("连接")
+//			})
+//			.catch((err)=>{
+//				console.log(err)
+//			})
+//			function getCookie(key){
+//				var cookies = document.cookie.split("; "); //将整个字符串切割为key=value的数组
+//				//遍历数组
+//				for(var i = 0;i < cookies.length;i ++){
+//					var cookiekeyAndValue = cookies[i].split("=");
+//					if(encodeURIComponent(key) == cookiekeyAndValue[0]){
+//						return decodeURIComponent(cookiekeyAndValue[1]);
+//					}
+//				}
+//			}
+//		}
+		addCart(detail){
+			this.$store.dispatch("addToCart", detail);
 		}
 	},
 	mounted(){
@@ -46,15 +91,15 @@ export default{
 			this.lunbo = res.data.data.banner.mainBanners[0].content;
 			this.activity = res.data.data.banner.mainBanners[2].content;
 			this.banner = res.data.data.banner.mainBanners[4].content;
-//			this.hot = res.data.data.banner.mainBanners[6].content;
-			this.hotSwiper = res.data.data.banner.mainBanners[6].content;
-			this.news = res.data.data.banner.mainBanners[8].content;
-			this.newsSwiper = res.data.data.banner.mainBanners[9].content;
-			this.fruitSwiper = res.data.data.banner.mainBanners[12].content;
-			this.seafoodSwiper = res.data.data.banner.mainBanners[14].content;
-			this.meatSwiper = res.data.data.banner.mainBanners[16].content;
-			this.fastfoodSwiper = res.data.data.banner.mainBanners[18].content;
-			this.popularList = res.data.data.banner.mainBanners[20].content;
+			this.hot = res.data.data.banner.mainBanners[6].content;
+			this.hotSwiper = res.data.data.banner.mainBanners[7].content;
+			this.news = res.data.data.banner.mainBanners[9].content;
+			this.newsSwiper = res.data.data.banner.mainBanners[10].content;
+			this.fruitSwiper = res.data.data.banner.mainBanners[13].content;
+			this.seafoodSwiper = res.data.data.banner.mainBanners[15].content;
+			this.meatSwiper = res.data.data.banner.mainBanners[17].content;
+			this.fastfoodSwiper = res.data.data.banner.mainBanners[19].content;
+			this.popularList = res.data.data.banner.mainBanners[21].content;
 			console.log(this.popularList);
 //			console.log(res)
 			this.$nextTick(()=>{
