@@ -34,5 +34,10 @@ export default {
 		  width:100
 		})
 	},500)
+  },
+  methods : {
+  	showToggle :  function(){
+  		console.log(this)
+  	}
   }
 } 

@@ -8,7 +8,7 @@
 
     <div class="swiper-container" v-if="list">
         <ul class="swiper-wrapper">
-            <li class="swiper-slide" style="width:10px;" v-for="item in list">
+            <li class="swiper-slide" @click="showToggle()" v-for="item in list">
               {{item.name}}
             </li>
         </ul>  
