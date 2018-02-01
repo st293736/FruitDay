@@ -15,14 +15,39 @@ export default{
 			number:0,
 			//每一个产品的数量
 			numbers:1,
-			title:0
+			title:[]
 		}
 	},
 	mounted(){
-		var that = this;
-		axios.get("/v3/cart/get?connect_id=m4vea4pl6tfooalkaqo1j9sfs5&store_id_list=3&item_id=")
-		.then((response)=>{
-			response = JSON.parse(localStorage.getItem("goodsData"));
+		if(getCookie("username")){
+			console.log("登录状态")
+			var cookieGet = JSON.parse(getCookie("username"));
+			this.user = cookieGet;
+			var username = this.user.mobile
+			axios.post("/addCart/getCart_ajax",{"username":username})
+			.then((response)=>{
+				if(response.data.length == 0){
+					this.showflag = true;
+				}else if(response.data[0].cartList.length == 0){
+					this.showflag = true;
+				}else{
+					for(var item in response.data[0].cartList){
+						var obj =response.data[0].cartList[item];
+						this.product.unshift(obj);
+						//计算总重量
+						this.weight = this.weight + Number(obj.weight) * obj.qty;
+						//计算总价格
+						this.price = this.price + Number(obj.price) * Number(obj.qty);
+						//计算总数量
+						this.number = this.number + Number(obj.qty);
+						this.title.push(obj.id);
+					}	
+				}
+//				this.$store.dispatch("totalNum", this.number);
+			})
+		}else{
+			console.log("未登录状态")
+			var response = JSON.parse(localStorage.getItem("goodsData"));
 			if(response == null){
 				this.showflag = true;
 			}else{
@@ -38,8 +63,9 @@ export default{
 					this.title = item;
 				}	
 			}
+//			this.$store.dispatch("totalNum", this.number);
 			
-		})
+		}
 		this.$nextTick(()=>{
 			//全选
 			$(".checkAll").click(function(){
@@ -86,9 +112,21 @@ export default{
 						mg = mg + eveWeight;
 						$("ul:eq(0)").children("p").children("span:eq(1)").children("span").html(mg.toFixed(3));
 					}
+
 				}
+				
 			})
 		})
+		function getCookie(key){
+			var cookies = document.cookie.split("; "); //将整个字符串切割为key=value的数组
+			//遍历数组
+			for(var i = 0;i < cookies.length;i ++){
+				var cookiekeyAndValue = cookies[i].split("=");
+				if(encodeURIComponent(key) == cookiekeyAndValue[0]){
+					return decodeURIComponent(cookiekeyAndValue[1]);
+				}
+			}
+		}
 		setTimeout(function(){
 				//单选
 				$(".option").each(function(index,value){
@@ -111,6 +149,7 @@ export default{
 							//该商品的总价格
 							var money_one = Number($(this).siblings(".product").children("p:eq(1)").children("span:eq(1)").html()) * Number($(this).siblings(".number").children("p").children("span").html());
 							money = (money - money_one).toFixed(2);
+
 							$(this).parents("section").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html(money);			
 						}else{
 							$(this).prop("checked",true);
@@ -178,7 +217,21 @@ export default{
 							$(this).parents("section").siblings(".closing").children("p:eq(1)").children("a").children("span").html(num);
 							//获取当前商品数量
 							var nums = Number($(this).siblings("span").html())
-							change(proName,nums);
+							var id = $(this).parents("li").attr("title");
+							if(getCookie("username")){
+								console.log("登录状态")
+								var cookieGet = JSON.parse(getCookie("username"));
+								this.user = cookieGet;
+								var username = this.user.mobile;
+								axios.post("/addCart/downCart_ajax",{username:username,id:id})
+								.then((res)=>{
+									console.log(res)
+								})
+								
+							}else{
+								change(proName,nums);
+							}
+
 						}
 					})
 				})
@@ -204,6 +257,20 @@ export default{
 						//获取当前商品的数量
 						num = num + 1;
 						$(this).parents("section").siblings(".closing").children("p:eq(1)").children("a").children("span").html(num);
+						var id = $(this).parents("li").attr("title");
+						console.log(id)
+						if(getCookie("username")){
+						console.log("登录状态")
+						var cookieGet = JSON.parse(getCookie("username"));
+						this.user = cookieGet;
+						var username = this.user.mobile;
+						axios.post("/addCart/plusCart_ajax",{username:username,id:id})
+						.then((res)=>{
+							console.log(res)
+							})
+						}else{
+							change(proName,nums);
+						}
 					})
 				})
 				//添加地址
@@ -253,7 +320,18 @@ export default{
 				//删除商品
 				var proNm = $(sp).parents(".number").siblings(".product").children("a:eq(1)").html();
 				var id = $(sp).parents("li").attr("title");
-				del(proNm,id);
+				if(getCookie("username")){
+					console.log("登录状态")
+					var cookieGet = JSON.parse(getCookie("username"));
+					this.user = cookieGet;
+					var username = this.user.mobile;
+					axios.post("/addCart/removeCart_ajax",{username:username,id:id})
+					.then((res)=>{
+						console.log(res)
+					})
+				}else{
+					del(proNm,id);
+				}
 				$("ul li").eq(index).remove();
 				var dename = $(this).parent().siblings().children("span").html();
 				$("#tilt").css("display","none");
@@ -279,7 +357,6 @@ function change(str,num){
 
 function del(strName,id){
 	var objs = JSON.parse(localStorage.getItem("goodsData"));
-	console.log(id);
 	for(var item in objs){
 		if(objs[item].name == strName){
 			delete objs[id];

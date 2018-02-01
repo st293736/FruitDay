@@ -9,12 +9,10 @@ export default{
 	methods:{
 	},
 	mounted(){
-		console.log(typeof getCookie("username"))
 		if(getCookie("username")){
 			var cookieGet = JSON.parse(getCookie("username"));
 			this.user = cookieGet;
 		}else{
-			console.log("no")
 			this.$router.push({path:"/login"});
 		}
 		//创建cookie

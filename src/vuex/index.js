@@ -18,11 +18,9 @@ function sveTolocal(state){
 var state = {
 }
 if(getCookie("username")){
-	console.log("用户在线")
 	axios.post("/addCart/getCart_ajax")
 	.then((res)=>{
-		console.log(res)
-		console.log("连接")
+		console.log("连接到数据库")
 	})
 	.catch((err)=>{
 		console.log(err)
@@ -66,9 +64,7 @@ const mutations={
 			})
 		}else{
 			var id = JSON.stringify(goodsInfo).slice(2,7);
-			console.log(goodsInfo[id])
 			state[id]=goodsInfo[id];
-			console.log(state)
 			sveTolocal(state)
 		}
 	}

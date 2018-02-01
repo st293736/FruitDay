@@ -83,7 +83,7 @@
   				<i class="iconfont icon-03"></i>
   			</p>
   		</div>
-  		<div class="bottom_right">
+  		<div class="bottom_right" @click.self.prevent.stop="addCart()">
   			<span>明日达</span>
   			加入购物车
   		</div>

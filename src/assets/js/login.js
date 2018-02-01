@@ -36,21 +36,17 @@ export default{
 								})
 				var cString = JSON.stringify(data);
 				if(Number($(".nodecode").val()) == Number(that.code)){
-
-					
 					axios.post("/api/regist4ajax",{username:that.obj.username,pwd:"",age:that.obj.age})
 					.then((res)=>{
-//						console.log(that);
 						createCookie("username",cString,7)
 						that.$router.push({
 							path:"/self",
 							name:"self",
 							params:{
-								name :"我自己",
+								name :"me",
 								datas: data
 							}
 						})
-
 					})
 					.catch((err)=>{
 						console.log("未连接数据库")
@@ -61,13 +57,13 @@ export default{
 			})
 		})
 		function createCookie(key,value,expires){
-						var cookieText = encodeURIComponent(key) + "=" + encodeURIComponent(value) + ";path=/";
-						if(typeof expires == "number"){
-							var date = new Date(); //创建日期对象
-							date.setDate(date.getDate() + expires); //修改日期
-							cookieText += ";expires=" + date; //设置有效期
-						}
-						document.cookie = cookieText; //创建cookie
-					}
+			var cookieText = encodeURIComponent(key) + "=" + encodeURIComponent(value) + ";path=/";
+			if(typeof expires == "number"){
+				var date = new Date(); //创建日期对象
+				date.setDate(date.getDate() + expires); //修改日期
+				cookieText += ";expires=" + date; //设置有效期
+			}
+			document.cookie = cookieText; //创建cookie
+		}
 	}
 }

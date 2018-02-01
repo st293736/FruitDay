@@ -4,27 +4,109 @@ export default {
   name: 'Details',
   data () {
     return {
+    	info:[],
       lists : {},
       twos : [],
       zk : [],
       tu : [],
       PingJ : {},
       gd : {},
-      JuTi : {}
+      JuTi : {},
+      user:[]
     }
   },
+  methods:{
+		addCart(){
+			//判断是否在线
+			if(getCookie("username")){
+				console.log("登录状态")
+				var cookieGet = JSON.parse(getCookie("username"));
+				this.user = cookieGet;
+				var username = this.user.mobile
+				var data={
+					username:username,
+					id: this.info.productItem[0].id,
+					name:this.info.productInfo.product_name,
+					volume:this.info.productItem[0].volume,
+					weight:parseInt(this.info.productItem[0].volume)/1000 ,
+					price:this.info.productInfo.price,
+					delivery_tag:"明日送",
+					qty : 1,
+					photo:String(this.info.templatePhoto[0].image)
+				};
+				console.log(data)
+				this.$store.dispatch("addToCart", data);
+			}else{
+				//存在本地
+				console.log("未登录状态")
+				var id = this.info.productItem[0].id;
+				console.log(id);
+				if(localStorage.getItem("goodsData")){
+					var datas = JSON.parse(localStorage.getItem("goodsData"));
+					console.log(datas)
+					if(id in datas){
+					console.log("存储在本地")
+					datas[id].qty ++;
+					var data = {};
+					data[id]= datas[id]
+					this.$store.dispatch("addToCart", data);
+					}else{
+						console.log("mei存储在")
+						var data = {};
+						data[id] = {
+							name:this.info.productInfo.product_name,
+							volume:this.info.productItem[0].volume,
+							weight:parseInt(this.info.productItem[0].volume)/1000 ,
+							price:this.info.productInfo.price,
+							delivery_tag:"明日送",
+							qty : 1,
+							photo:String(this.info.templatePhoto[0].image)
+						}
+						this.$store.dispatch("addToCart", data);
+					}
+				}else{
+					var data = {};
+					data[id] = {
+						name:this.info.productInfo.product_name,
+						volume:this.info.productItem[0].volume,
+						weight:parseInt(this.info.productItem[0].volume)/1000 ,
+						price:this.info.productInfo.price,
+						delivery_tag:"明日送",
+						qty : 1,
+						photo:String(this.info.templatePhoto[0].image)
+					}
+					this.$store.dispatch("addToCart", data);
+				}
+			}
+			function getCookie(key){
+				var cookies = document.cookie.split("; "); //将整个字符串切割为key=value的数组
+				//遍历数组
+				for(var i = 0;i < cookies.length;i ++){
+					var cookiekeyAndValue = cookies[i].split("=");
+					if(encodeURIComponent(key) == cookiekeyAndValue[0]){
+						return decodeURIComponent(cookiekeyAndValue[1]);
+					}
+				}
+			}
+		}
+	},
   mounted(){
   	//console.log(this);
     var id = this.$route.params.a;
   	//axios拿到跳转到详情页的商品的id
-  	
+
   	axios.get(`/v3/product/detail?store_id_list=3&product_id=${id}&store_id=3&delivery_code=3`)
 	  .then( (res) => {
 	    //console.log(res);
+	    this.info = res.data.data;
 	    this.lists = res.data.data.productInfo;
 	    this.twos = res.data.data.productItem;
 	    this.zk = res.data.data;
 	    this.tu = res.data.data.templatePhoto;
+  	console.log(this.lists)
+  	console.log(this.twos)
+  	console.log(this.zk)
+  	console.log(this.tu)
 	    //console.log(res.data.data.productInfo.product_name);
 	  })
 	  .catch(function (error) {

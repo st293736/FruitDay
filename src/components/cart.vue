@@ -11,7 +11,7 @@
 			<div class="one" v-if="showflag">
 				<img src="../assets/img/imgS/cart_empty-172251d77c.png"/>
 				<div class="text">还没找到心仪的商品吗？</div>
-				<a href="#">去逛逛吧</a>
+				<router-link to="/">去逛逛吧</router-link> 
 			</div>
 			<div class="two" v-if="!showflag">
 				<a href="#" class="addAress">
@@ -23,7 +23,7 @@
 						<span>商品清单</span>
 						<span>总重约<span class="totalWeight">{{weight.toFixed(3)}}</span>kg</span>
 					</p>
-					<li v-for="item in product" class="lis" :title="title">
+					<li v-for="(item,index) in product" class="lis" :title="title[index]">
 						<input type="checkbox" class="choise option" checked="checked"/>
 						<div class="product">
 							<a href="#"><img :src="item.photo"/></a>

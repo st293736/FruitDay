@@ -44,7 +44,6 @@
             <a href="javascript:;">分类</a>
          </router-link>
          <router-link :to="{name:'cart'}" class="rl">
-         		<em class="cartnum">{{$store.state.length}}</em>
             <i class="iconfont icon-03"></i>
             <a href="javascript:;">购物车</a>
          </router-link>
