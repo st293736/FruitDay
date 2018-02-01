@@ -14,7 +14,7 @@
             <i class="iconfont icon-03"></i>
             <a href="javascript:;">购物车</a>
          </router-link>
-          <router-link :to="{name:'self'}" class="rl" >
+          <router-link :to="{name:'self'}" class="rl">
             <i class="iconfont icon-huiyuan"></i>
             <a href="javascript:;">我的果园</a>
           </router-link>

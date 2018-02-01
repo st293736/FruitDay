@@ -14,28 +14,31 @@ export default{
 			//总产品件数
 			number:0,
 			//每一个产品的数量
-			numbers:1
+			numbers:1,
+			title:0
 		}
 	},
 	mounted(){
 		var that = this;
 		axios.get("/v3/cart/get?connect_id=m4vea4pl6tfooalkaqo1j9sfs5&store_id_list=3&item_id=")
 		.then((response)=>{
-			this.product = response.data.cart;
-			console.log(this.product.products);
-//			this.product.length = 0;
-			console.log(response);
-			if(this.product.length == 0){
+			response = JSON.parse(localStorage.getItem("goodsData"));
+			if(response == null){
 				this.showflag = true;
 			}else{
-				this.weight = Number(response.data.cart.total.weight)
-				//计算总重,总价格,总产品件数
-				var length = response.data.cart.products.length;
-				this.price = Number(response.data.cart.total.normal_price);
-				this.number = Number(response.data.cart.total.selected);
+				for(var item in response){
+					var obj = response[item];
+					this.product.unshift(obj);
+					//计算总重量
+					this.weight = this.weight + Number(obj.weight) * obj.qty;
+					//计算总价格
+					this.price = this.price + Number(obj.price) * Number(obj.qty);
+					//计算总数量
+					this.number = this.number + Number(obj.qty);
+					this.title = item;
+				}	
 			}
-		}).catch(function(err){
-			console.log(err);
+			
 		})
 		this.$nextTick(()=>{
 			//全选
@@ -81,7 +84,7 @@ export default{
 						//获取到每一个商品的重量
 						var eveWeight = Number($(tag[i]).children(".product").children("p:eq(0)").children("span:eq(1)").html()) * Number($(tag[i]).children(".number").children("p").children("span").html());
 						mg = mg + eveWeight;
-						$("ul:eq(0)").children("p").children("span:eq(1)").children("span").html(mg);
+						$("ul:eq(0)").children("p").children("span:eq(1)").children("span").html(mg.toFixed(3));
 					}
 				}
 			})
@@ -102,7 +105,7 @@ export default{
 							var weight = Number($(this).parents("li").siblings("p").children("span:eq(1)").children("span").html());
 							//当前商品重量
 							var weight_one = Number($(this).siblings(".product").children("p:eq(0)").children("span:eq(1)").html() * Number($(this).siblings(".number").children("p").children("span").html()));
-							$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight - weight_one);
+							$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html((weight - weight_one).toFixed(3));
 							//当前显示的总价格
 							var money = Number($(this).parents("section").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html());
 							//该商品的总价格
@@ -128,7 +131,7 @@ export default{
 							var weight = Number($(this).parents("li").siblings("p").children("span:eq(1)").children("span").html());
 							//当前商品重量
 							var weight_one = Number($(this).siblings(".product").children("p:eq(0)").children("span:eq(1)").html() * Number($(this).siblings(".number").children("p").children("span").html()));
-							$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight + weight_one);
+							$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html((weight + weight_one).toFixed(3));
 							//当前显示的总价格
 							var money = Number($(this).parents("section").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html());
 							//该商品的总价格
@@ -142,6 +145,7 @@ export default{
 				//获得按钮
 				$(".minus").each(function(index,value){
 					$(this).click(function(){
+						var proName = $(this).parents(".number").siblings(".product").children("a:eq(1)").html();
 						var that = this;
 						var singleNum = Number($(this).siblings(".num").html());
 						singleNum -= 1;
@@ -160,7 +164,7 @@ export default{
 							//当前商品的总重量
 							var str = Number($(this).parents(".number").siblings(".product").children("p:eq(0)").children("span:eq(1)").html());
 							weight = weight - str;
-							$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight);
+							$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight.toFixed(3));
 							//获取当前的总价格
 							var money = Number($(this).parents("section").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html());
 							//每个商品的总价格
@@ -172,6 +176,9 @@ export default{
 							//获取当前商品的数量
 							num = num - 1;
 							$(this).parents("section").siblings(".closing").children("p:eq(1)").children("a").children("span").html(num);
+							//获取当前商品数量
+							var nums = Number($(this).siblings("span").html())
+							change(proName,nums);
 						}
 					})
 				})
@@ -185,7 +192,7 @@ export default{
 						//当前商品的总重量
 						var str = Number($(this).parents(".number").siblings(".product").children("p:eq(0)").children("span:eq(1)").html());
 						weight = weight + str;
-						$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight);
+						$(this).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight.toFixed(3));
 						//获取当前的总价格
 						var money = Number($(this).parents("section").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html());
 						//每个商品的总价格
@@ -224,13 +231,14 @@ export default{
 			})
 			//确定
 			$(".ok").click(function(){
+				var that = this;
 				var sp = $("ul li").eq(index).children(".number").children("p").children("span");
 				//获取显示的总重量
 				var weight = Number($(sp).parents("li").siblings("p").children("span:eq(1)").children("span").html());
 				//当前商品的总重量
 				var str = Number($(sp).parents(".number").siblings(".product").children("p:eq(0)").children("span:eq(1)").html());
 				weight = weight - str;
-				$(sp).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight);
+				$(sp).parents("li").siblings("p").children("span:eq(1)").children("span").html(weight.toFixed(3));
 				//获取当前的总价格
 				var money = Number($(sp).parents("section").siblings(".closing").children("p:eq(1)").children("span").children("span:eq(1)").html());
 				//每个商品的总价格
@@ -242,8 +250,10 @@ export default{
 				//获取当前商品的数量
 				num = num - 1;
 				$(sp).parents("section").siblings(".closing").children("p:eq(1)").children("a").children("span").html(num);
-				
-				
+				//删除商品
+				var proNm = $(sp).parents(".number").siblings(".product").children("a:eq(1)").html();
+				var id = $(sp).parents("li").attr("title");
+				del(proNm,id);
 				$("ul li").eq(index).remove();
 				var dename = $(this).parent().siblings().children("span").html();
 				$("#tilt").css("display","none");
@@ -254,4 +264,26 @@ export default{
 		}
 	},
 	
+}
+function change(str,num){
+	var objs = JSON.parse(localStorage.getItem("goodsData"));
+	for(var item in objs){
+		if(objs[item].name == str){
+			if(objs[item].qty != num){
+				objs[item].qty = num;
+				localStorage.setItem("goodsData",JSON.stringify(objs));
+			}
+		}
+	}
+}
+
+function del(strName,id){
+	var objs = JSON.parse(localStorage.getItem("goodsData"));
+	console.log(id);
+	for(var item in objs){
+		if(objs[item].name == strName){
+			delete objs[id];
+			localStorage.setItem("goodsData",JSON.stringify(objs));
+		}
+	}
 }

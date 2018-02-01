@@ -27,22 +27,21 @@ export default{
 				var datas = JSON.parse(localStorage.getItem("goodsData"));
 				console.log(datas)
 				if(id in datas){
-				console.log("存储在")
-				console.log(datas[id].qty)
-				datas[id].qty ++;
-				console.log(datas[id].qty)
-				var data = {};
-				data[id]= datas[id]
-				console.log(data)
-				this.$store.dispatch("addToCart", data);
-				
+					console.log("存储在")
+					console.log(datas[id].qty)
+					datas[id].qty ++;
+					console.log(datas[id].qty)
+					var data = {};
+					data[id]= datas[id]
+					console.log(data)
+					this.$store.dispatch("addToCart", data);
 				}else{
 					console.log("mei存储在")
 					var data = {};
 					data[id] = {
 							name:this[goodsList][index].title,
 							volume:this[goodsList][index].volume,
-							weight:parseInt(this[goodsList][index].volume)/1000 + "kg",
+							weight:parseInt(this[goodsList][index].volume)/1000,
 							price:this[goodsList][index].price,
 							delivery_tag:"明日送",
 							qty : 1,
@@ -55,7 +54,7 @@ export default{
 				data[id] = {
 					name:this[goodsList][index].title,
 					volume:this[goodsList][index].volume,
-					weight:parseInt(this[goodsList][index].volume)/1000 + "kg",
+					weight:parseInt(this[goodsList][index].volume)/1000,
 					price:this[goodsList][index].price,
 					delivery_tag:"明日送",
 					qty : 1,
@@ -90,13 +89,20 @@ export default{
 			},{enableHighAccuracy: true})
 			axios.get('/v3/ad/homepage?connect_id=kms9kldda5j6nr7n33rjg5h964&type=0&lonlat=116.25153%2C40.11623&ad_code=110114&tab_id=')
 			.then((res)=>{
+			//第一个轮播
 			this.lunbo = res.data.data.banner.mainBanners[0].content;
+			//活动
 			this.activity = res.data.data.banner.mainBanners[2].content;
+			//第二个轮播
 			this.banner = res.data.data.banner.mainBanners[4].content;
+			//
 			this.hot = res.data.data.banner.mainBanners[6].content;
+//			console.log(this.hot);
 			this.hotSwiper = res.data.data.banner.mainBanners[7].content;
+//			console.log(this.hotSwiper);
 			this.news = res.data.data.banner.mainBanners[9].content;
 			this.newsSwiper = res.data.data.banner.mainBanners[10].content;
+//			console.log(this.newsSwiper);
 			this.fruitSwiper = res.data.data.banner.mainBanners[13].content;
 			this.seafoodSwiper = res.data.data.banner.mainBanners[15].content;
 			this.meatSwiper = res.data.data.banner.mainBanners[17].content;

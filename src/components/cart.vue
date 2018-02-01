@@ -21,9 +21,9 @@
 				<ul>
 					<p>
 						<span>商品清单</span>
-						<span>总重约<span class="totalWeight">{{weight}}</span>kg</span>
+						<span>总重约<span class="totalWeight">{{weight.toFixed(3)}}</span>kg</span>
 					</p>
-					<router-link :to="{name:'Details',params:{a:item.product_id}}" v-for="(item,index) in product.products" :key="index" class="lis">
+					<li v-for="item in product" class="lis" :title="title">
 						<input type="checkbox" class="choise option" checked="checked"/>
 						<div class="product">
 							<a href="#"><img :src="item.photo"/></a>
@@ -45,7 +45,7 @@
 								<a href="#" class="add">+</a>
 							</p>
 						</div>
-					</router-link>
+					</li>
 				</ul>
 			</div>
 		</section>
@@ -58,7 +58,7 @@
 					<span>合计：</span>
 					¥<span class="money">{{price.toFixed(2)}}</span>
 				</span>
-				<a href="#">立即结算(<span class="sum">{{product.count}}</span>)</a>
+				<a href="#">立即结算(<span class="sum">{{number}}</span>)</a>
 			</p>
 		</div>
 		<footer>

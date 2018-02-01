@@ -5,8 +5,7 @@ export default {
   data () {
     return {
       list : {},
-      OG : [],
-      flag : false
+      OG : []
     }
   },
   methods : {
@@ -81,7 +80,7 @@ export default {
         $("._right").eq(ind).siblings("._right").hide();  
       })
     // })
-      },100)
+      },200)
     }
       
     

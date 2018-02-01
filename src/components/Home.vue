@@ -47,7 +47,7 @@
 										{{item.price}}/
 										<em>{{item.volume}}</em>
 									</span>
-									<i class="addcart iconfont"  @click.self.prevent.stop="addCart('hotSwiper',index)">
+									<i class="addcart iconfont"  @click.self.prevent.stop="addCart('hot',index)">
 									</i>
 								</div>
 							</dd>
@@ -73,7 +73,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart('newsSwiper',index)">
+					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart('hotSwiper',index)">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -110,7 +110,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart('fruitSwiper',index)">
+					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart('newsSwiper',index)">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -146,7 +146,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart('seafoodSwiper',index)">
+					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart('fruitSwiper',index)">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -176,7 +176,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart('meatSwiper',index)">
+					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart('seafoodSwiper',index)">
 					    			</i>
 					    		</div>
 					    	</router-link>
