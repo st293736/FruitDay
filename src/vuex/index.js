@@ -2,11 +2,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 Vue.use(Vuex)
-if(localStorage.getItem("data")){
-	var data = JSON.parse(localStorage.getItem("data"));
-	console.log(data)
-	state = data;
-}
 function getCookie(key){
 	var cookies = document.cookie.split("; "); //将整个字符串切割为key=value的数组
 	//遍历数组
@@ -18,17 +13,29 @@ function getCookie(key){
 	}
 }
 function sveTolocal(state){
-	localStorage.setItem("data",JSON.stringify(state));
+	localStorage.setItem("goodsData",JSON.stringify(state));
 }
 var state = {
-	cartData:[]
 }
-if(localStorage.getItem("data")){
-	var data = JSON.parse(localStorage.getItem("data"));
-	state = data;
+if(getCookie("username")){
+	console.log("用户在线")
+	axios.post("/addCart/getCart_ajax")
+	.then((res)=>{
+		console.log(res)
+		console.log("连接")
+	})
+	.catch((err)=>{
+		console.log(err)
+	})
+}else{
+	console.log("用户不在")
+	if(localStorage.getItem("goodsData")){
+		var data = JSON.parse(localStorage.getItem("goodsData"));
+		state = data;
+	}
 }
 function sveTolocal(state){
-	localStorage.setItem("data",JSON.stringify(state));
+	localStorage.setItem("goodsData",JSON.stringify(state));
 }
 function getCookie(key){
 	var cookies = document.cookie.split("; "); //将整个字符串切割为key=value的数组
@@ -40,16 +47,14 @@ function getCookie(key){
 		}
 	}
 }
+
 const mutations={
 	addToCart:function(state,goodsInfo){
-		state.cartData.push(goodsInfo);
-		console.log(this.state.cartData);
 		//判断是否登录
 		if(getCookie("username")){
 			console.log("存入数据库")
 			var cookieGet = JSON.parse(getCookie("username"));
 			this.user = cookieGet;
-			console.log(this.user);
 			var datas = goodsInfo;
 			axios.post("/addCart/addCart_ajax",datas)
 			.then((res)=>{
@@ -59,9 +64,11 @@ const mutations={
 			.catch((err)=>{
 				console.log(err)
 			})
-			
 		}else{
-			console.log("存入本地")
+			var id = JSON.stringify(goodsInfo).slice(2,7);
+			console.log(goodsInfo[id])
+			state[id]=goodsInfo[id];
+			console.log(state)
 			sveTolocal(state)
 		}
 	}

@@ -20,47 +20,49 @@ export default{
 		}
 	},
 	methods:{
-//		addCart(goodsList,index){
-//			if(getCookie("username")){
-//			var cookieGet = JSON.parse(getCookie("username"));
-//			this.user = cookieGet;
-//			console.log(this.user);
-//			}else{
-//				console.log("no")
-//			}
-//			console.log(this[goodsList][index])
-//			var datas = new Object({
-//				username:this.user.mobile,
-//				name:this[goodsList][index].title,
-//				volume:this[goodsList][index].volume,
-//				weight:parseInt(this[goodsList][index].volume)/1000 + "kg",
-//				price:this[goodsList][index].price,
-//				qty: 1,
-//				photo:this[goodsList][index].image
-//			})
-//			console.log(datas);
-//			var dataStr = JSON.stringify(datas)
-//			axios.post("/addCart/addCart_ajax",datas)
-//			.then((res)=>{
-//				console.log(res)
-//				console.log("连接")
-//			})
-//			.catch((err)=>{
-//				console.log(err)
-//			})
-//			function getCookie(key){
-//				var cookies = document.cookie.split("; "); //将整个字符串切割为key=value的数组
-//				//遍历数组
-//				for(var i = 0;i < cookies.length;i ++){
-//					var cookiekeyAndValue = cookies[i].split("=");
-//					if(encodeURIComponent(key) == cookiekeyAndValue[0]){
-//						return decodeURIComponent(cookiekeyAndValue[1]);
-//					}
-//				}
-//			}
-//		}
-		addCart(detail){
-			this.$store.dispatch("addToCart", detail);
+		addCart(goodsList,index){
+			var id = this[goodsList][index].target_id;
+			console.log(id);
+			if(localStorage.getItem("goodsData")){
+				var datas = JSON.parse(localStorage.getItem("goodsData"));
+				console.log(datas)
+				if(id in datas){
+				console.log("存储在")
+				console.log(datas[id].qty)
+				datas[id].qty ++;
+				console.log(datas[id].qty)
+				var data = {};
+				data[id]= datas[id]
+				console.log(data)
+				this.$store.dispatch("addToCart", data);
+				
+				}else{
+					console.log("mei存储在")
+					var data = {};
+					data[id] = {
+							name:this[goodsList][index].title,
+							volume:this[goodsList][index].volume,
+							weight:parseInt(this[goodsList][index].volume)/1000 + "kg",
+							price:this[goodsList][index].price,
+							delivery_tag:"明日送",
+							qty : 1,
+							photo:this[goodsList][index].image
+						}
+					this.$store.dispatch("addToCart", data);
+				}
+			}else{
+				var data = {};
+				data[id] = {
+					name:this[goodsList][index].title,
+					volume:this[goodsList][index].volume,
+					weight:parseInt(this[goodsList][index].volume)/1000 + "kg",
+					price:this[goodsList][index].price,
+					delivery_tag:"明日送",
+					qty : 1,
+					photo:this[goodsList][index].image
+				}
+				this.$store.dispatch("addToCart", data);
+			}
 		}
 	},
 	mounted(){
@@ -100,7 +102,7 @@ export default{
 			this.meatSwiper = res.data.data.banner.mainBanners[17].content;
 			this.fastfoodSwiper = res.data.data.banner.mainBanners[19].content;
 			this.popularList = res.data.data.banner.mainBanners[21].content;
-			//console.log(this.hotSwiper);
+//			console.log(this.popularList);
 //			console.log(res)
 			this.$nextTick(()=>{
 				var mySwiper = new Swiper('.swiper-container', {

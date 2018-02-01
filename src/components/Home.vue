@@ -47,7 +47,7 @@
 										{{item.price}}/
 										<em>{{item.volume}}</em>
 									</span>
-									<i class="addcart iconfont"  @click.self.prevent.stop="addCart(hot[index])">
+									<i class="addcart iconfont"  @click.self.prevent.stop="addCart('hotSwiper',index)">
 									</i>
 								</div>
 							</dd>
@@ -73,7 +73,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart(hotSwiper[index])">
+					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart('newsSwiper',index)">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -110,7 +110,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart(newsSwiper[index])">
+					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart('fruitSwiper',index)">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -146,7 +146,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart(fruitSwiper[index])">
+					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart('seafoodSwiper',index)">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -176,7 +176,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart(seafoodSwiper[index])">
+					    			<i class="addcart iconfont"  @click.self.prevent.stop="addCart('meatSwiper',index)">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -236,7 +236,7 @@
 					    				¥{{item.price}}/
 					    				<em>{{item.volume}}</em>
 					    			</span>
-					    			<i class="addcart iconfont" @click.self.prevent.stop="addCart(fastfoodSwiper[index])">
+					    			<i class="addcart iconfont" @click.self.prevent.stop="addCart('fastfoodSwiper',index)">
 					    			</i>
 					    		</div>
 					    	</router-link>
@@ -264,7 +264,7 @@
 										{{item.price}}/
 										<em>{{item.volume}}</em>
 									</span>
-									<i class="addcart iconfont" @click.self.prevent.stop="addCart(popularList[index])">
+									<i class="addcart iconfont" @click.self.prevent.stop="aaddCart('popularList',index)">
 									</i>
 								</div>
 							</dd>
@@ -284,7 +284,7 @@
             <a href="javascript:;">分类</a>
          </router-link>
          <router-link :to="{name:'cart'}" class="rl">
-         	<em class="cartnum">{{$store.state.cartData.length}}</em>
+         	<em class="cartnum">{{$store.state.length}}</em>
             <i class="iconfont icon-03"></i>
             <a href="javascript:;">购物车</a>
          </router-link>
