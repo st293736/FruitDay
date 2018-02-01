@@ -16,7 +16,7 @@ export default {
 	var id = this.$route.params.all;
 	axios.get(`/v3/product/sub_category_list?store_id_list=3&class2_id=${id}&class3_id=0&sort_type=1&tms_region_type=1`)
 	.then((res) => {
-	   console.log(res);
+	   //console.log(res);
 	   this.list = res.data.data.brotherClass;
 	   this.tit = res.data.data.fatherClass;
 	   this.eve = res.data.data.productGroup;
@@ -27,7 +27,7 @@ export default {
 	});
 
 	//第二次axios
-	//console.log(this.$route.params.all);
+	console.log(this);
 	//this.$nextTick(function(){
 		setTimeout(function(){
 		var mySwiper = new Swiper('.swiper-container',{

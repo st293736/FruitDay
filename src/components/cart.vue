@@ -23,7 +23,7 @@
 						<span>商品清单</span>
 						<span>总重约<span class="totalWeight">{{weight}}</span>kg</span>
 					</p>
-					<li v-for="item in product.products" class="lis">
+					<router-link :to="{name:'Details',params:{a:item.product_id}}" v-for="(item,index) in product.products" :key="index" class="lis">
 						<input type="checkbox" class="choise option" checked="checked"/>
 						<div class="product">
 							<a href="#"><img :src="item.photo"/></a>
@@ -45,7 +45,7 @@
 								<a href="#" class="add">+</a>
 							</p>
 						</div>
-					</li>
+					</router-link>
 				</ul>
 			</div>
 		</section>

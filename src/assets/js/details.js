@@ -14,10 +14,9 @@ export default {
     }
   },
   mounted(){
-  	//console.log(this);
+  	console.log(this);
     var id = this.$route.params.a;
   	//axios拿到跳转到详情页的商品的id
-  	
   	axios.get(`/v3/product/detail?store_id_list=3&product_id=${id}&store_id=3&delivery_code=3`)
 	  .then( (res) => {
 	    //console.log(res);

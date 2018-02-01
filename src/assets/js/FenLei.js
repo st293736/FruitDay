@@ -5,7 +5,8 @@ export default {
   data () {
     return {
       list : {},
-      OG : []
+      OG : [],
+      flag : false
     }
   },
   methods : {
