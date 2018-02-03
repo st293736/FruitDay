@@ -19,6 +19,7 @@ export default{
 		}
 	},
 	mounted(){
+		
 		if(getCookie("username")){
 			console.log("登录状态")
 			var cookieGet = JSON.parse(getCookie("username"));
@@ -52,6 +53,7 @@ export default{
 				this.showflag = true;
 			}else{
 				for(var item in response){
+					console.log(item);
 					var obj = response[item];
 					this.product.unshift(obj);
 					//计算总重量
@@ -60,11 +62,10 @@ export default{
 					this.price = this.price + Number(obj.price) * Number(obj.qty);
 					//计算总数量
 					this.number = this.number + Number(obj.qty);
-					this.title = item;
+					this.title.unshift(item);
 				}	
 			}
 //			this.$store.dispatch("totalNum", this.number);
-			
 		}
 		this.$nextTick(()=>{
 			//全选
@@ -237,6 +238,7 @@ export default{
 				})
 				$(".add").each(function(index,value){
 					$(this).click(function(){
+						var proName = $(this).parents(".number").siblings(".product").children("a:eq(1)").html();
 						var singleNum = Number($(this).siblings(".num").html());
 						singleNum += 1;
 						$(this).siblings(".num").html(singleNum);
@@ -258,7 +260,7 @@ export default{
 						num = num + 1;
 						$(this).parents("section").siblings(".closing").children("p:eq(1)").children("a").children("span").html(num);
 						var id = $(this).parents("li").attr("title");
-						console.log(id)
+						var nums = Number($(this).siblings("span").html())
 						if(getCookie("username")){
 						console.log("登录状态")
 						var cookieGet = JSON.parse(getCookie("username"));
@@ -318,8 +320,8 @@ export default{
 				num = num - 1;
 				$(sp).parents("section").siblings(".closing").children("p:eq(1)").children("a").children("span").html(num);
 				//删除商品
-				var proNm = $(sp).parents(".number").siblings(".product").children("a:eq(1)").html();
 				var id = $(sp).parents("li").attr("title");
+				console.log(id);
 				if(getCookie("username")){
 					console.log("登录状态")
 					var cookieGet = JSON.parse(getCookie("username"));
@@ -330,9 +332,15 @@ export default{
 						console.log(res)
 					})
 				}else{
-					del(proNm,id);
+					del(id);
+					$("ul li").eq(index).remove();
+					/*var leng = $("ul li").length;
+					if(leng < 1){
+						$(".one").css("display","block");
+						$(".tow").css("display","none");
+					}*/
 				}
-				$("ul li").eq(index).remove();
+				
 				var dename = $(this).parent().siblings().children("span").html();
 				$("#tilt").css("display","none");
 				$("#hint").css("display","none");
@@ -355,12 +363,10 @@ function change(str,num){
 	}
 }
 
-function del(strName,id){
+function del(id){
+	console.log(id);
 	var objs = JSON.parse(localStorage.getItem("goodsData"));
-	for(var item in objs){
-		if(objs[item].name == strName){
-			delete objs[id];
-			localStorage.setItem("goodsData",JSON.stringify(objs));
-		}
-	}
+	console.log(JSON.stringify(objs));
+	delete objs[id];
+	localStorage.setItem("goodsData",JSON.stringify(objs));
 }

@@ -8,12 +8,12 @@
 			<a href="#" v-if="!showflag">编辑</a>
 		</header>
 		<section>
-			<div class="one" v-if="showflag">
+			<div class="one" v-show="showflag" ref="block">
 				<img src="../assets/img/imgS/cart_empty-172251d77c.png"/>
 				<div class="text">还没找到心仪的商品吗？</div>
 				<router-link to="/">去逛逛吧</router-link> 
 			</div>
-			<div class="two" v-if="!showflag">
+			<div class="two" v-show="!showflag">
 				<a href="#" class="addAress">
 					<span>添加地址</span>
 					<span></span>
@@ -23,14 +23,14 @@
 						<span>商品清单</span>
 						<span>总重约<span class="totalWeight">{{weight.toFixed(3)}}</span>kg</span>
 					</p>
-					<li v-for="(item,index) in product" class="lis" :title="title[index]">
+					<li v-for="(item,index) in product" class="lis" :title="title[index]" ref="lis">
 						<input type="checkbox" class="choise option" checked="checked"/>
 						<div class="product">
 							<a href="#"><img :src="item.photo"/></a>
 							<a href="#" class="name">{{item.name}}</a>
 							<p>
 								<span class="zhiliang1">{{item.volume}}</span>
-								<span class="zhiliang2">{{item.weight}}</span>kg
+								<span class="zhiliang2">{{item.weight}}</span>
 							</p>
 							<p>
 								<span>¥</span>

@@ -146,16 +146,18 @@
                     align-items: center;
                     width: 100%;
                     height: 1.1rem;
+                    justify-content: space-between;
                     border-bottom: 0.01rem solid #d8d8d8;
                     input{
                         display: inline-block;
-//                      width: 0.16rem;
+                        width: 0.16rem;
                         height: 0.16rem;
                         margin:0.03rem;
 //                      border-radius: 50%;
                     }
                     .product{
 //                      width: 2.15rem;
+                        flex:1;
                         height: 0.9rem;
                         float: left;
                         >a:nth-of-type(1){
@@ -171,6 +173,11 @@
                             }
                         }
                         >a:nth-of-type(2){
+                            display: inline-block;
+                            width:1.2rem;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                             float: left;
                             color: #3a3a3a;
                             font-size: 14px ;
@@ -188,9 +195,14 @@
                                 color: #878787;
                                 float: left;
                                 font-size: 13px;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
                             } 
                             span:nth-of-type(1){
-                                margin-right: 0.1rem;
+                                width:50%;
+                                white-space: nowrap;
+//                              margin-right: 0.1rem;
                             }                         
                         }
                         >p:nth-of-type(2){
@@ -229,12 +241,13 @@
                         }
                     }
                     .number{
-                        width: 0.9rem;
+                        width: 0.7rem;
                         height: 0.9rem;
-                        float: left;
                         display: flex;
+                        float: right;
                         align-items: flex-end;
                         p{
+                            width: 100%;
                             height: 0.22rem;
                             background: white;
                             display: flex;
